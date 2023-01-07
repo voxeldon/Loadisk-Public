@@ -1,4 +1,4 @@
-[Back](https://github.com/Voxel-Lab-Studios/Loadisk/blob/main/documentation/01_main.md)
+[Back](https://github.com/voxeldon/Loadisk-Public/blob/main/documentation/01_main.md)
 # Scoreboard Variables  
 ## World
 - **v.min** 
@@ -76,4 +76,4 @@
 - **v.temperature**
   > Return (0-3) for player detected temperature value. (0 Cold, 1 Mild, 2 Ocean, 3 Warm)
 
-[Back](https://github.com/Voxel-Lab-Studios/Loadisk/blob/main/documentation/01_main.md)
+[Back](https://github.com/voxeldon/Loadisk-Public/blob/main/documentation/01_main.md)
