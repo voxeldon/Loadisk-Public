@@ -1,4 +1,4 @@
-[Back](https://github.com/Voxel-L**ab-S**tudios/Loadisk/blob/main/documentation/01_main.md)
+[Back](https://github.com/voxeldon/Loadisk-Public/blob/main/documentation/01_main.md)
 # Common Controllers 
 
 Loadisk has a few built in render & animation controllers we commonly used across most of our addons.
@@ -39,4 +39,4 @@ Loadisk has a few built in render & animation controllers we commonly used acros
 - **controller.render.loadisk.remove_hurt**
   > Remove hurt color 
 
-[Back](https://github.com/Voxel-L**ab-S**tudios/Loadisk/blob/main/documentation/01_main.md)
+[Back](https://github.com/voxeldon/Loadisk-Public/blob/main/documentation/01_main.md)
