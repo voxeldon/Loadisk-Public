@@ -1,4 +1,4 @@
-[Back](https://github.com/voxeldon/Loadisk-Public/blob/main/documentation/01_main.md)
+[Back](https://github.com/Voxel-Lab-Studios/Loadisk/blob/main/documentation/01_main.md)
 # Scoreboard Variables  
 ## World
 - **v.min** 
@@ -35,6 +35,8 @@
   > Return (1) if player is idle else return 0
 - **v.jump** 
   > Return (1) if player is jumping else return 0
+- **v.life** 
+  > Return (1) if player is dead else return 0
 - **v.left** 
   > Return (1) when player left'Punch' input is triggered else return 0
 - **v.right** 
@@ -76,4 +78,4 @@
 - **v.temperature**
   > Return (0-3) for player detected temperature value. (0 Cold, 1 Mild, 2 Ocean, 3 Warm)
 
-[Back](https://github.com/voxeldon/Loadisk-Public/blob/main/documentation/01_main.md)
+[Back](https://github.com/Voxel-Lab-Studios/Loadisk/blob/main/documentation/01_main.md)
