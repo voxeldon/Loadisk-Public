@@ -1,0 +1,338 @@
+{
+    "format_version": "1.10.0",
+    "animation_controllers": {
+        "controller.animation.loadisk.player.handler": {
+            "initial_state": "state_filter",
+            "states": {
+                "state_filter": {"transitions": [{"controllers": "(1.0)"}]},
+                "controllers": {
+                    "animations": [
+                        "lifetime.c","input.c","movement.c","jump.c","sneak.c","sleep.c","ride.c","ground.c","u_block.c","flight.c","light_level.c","hurt.c","temp.c","hit.c"
+                    ],
+                    "transitions": [{"state_filter": "q.all_animations_finished"}]
+                }
+            }
+        },
+        "controller.animation.loadisk.player.flight": {
+			"initial_state" : "state_filter",
+			"states": {
+				"run_flight": {
+					"animations": ["flight","hover","lock"],
+					"transitions": [{"state_filter": "!q.can_fly"}]
+				},
+				"state_filter": {"transitions": [{"run_flight": "q.can_fly"}]}
+			}
+		},
+        "controller.animation.loadisk.player.input": {
+			"initial_state": "state_filter",
+			"states": {
+                "state_filter": {
+					"transitions": [
+						{"left_click": "variable.attack_time > 0.0"},
+						{"right_click": "q.is_using_item"}
+					]
+				},
+				"left_click": {
+                    "on_entry": ["/scoreboard players set @s v.left 1"],
+                    "on_exit": ["/scoreboard players set @s v.left 0","/scoreboard players set @s t.left 0"],
+					"transitions": [{"state_filter": "variable.attack_time == 0.0"}]
+				},
+				"right_click": {
+                    "on_entry": ["/scoreboard players set @s v.right 1"],
+                    "on_exit": ["/scoreboard players set @s v.right 0","/scoreboard players set @s t.right 0"],
+					"transitions": [{"state_filter": "!q.is_using_item"}]
+				}
+			}
+		},
+        "controller.animation.loadisk.player.lifetime": {
+			"initial_state": "on_death",
+			"states": {
+				"on_death": {
+					"transitions": [
+						{"on_alive": "!q.is_alive && q.death_ticks > 0"}
+					],
+					"on_exit": ["/scoreboard players set @s v.life 1"]
+				},
+				"on_alive": {
+					"on_exit": ["/scoreboard players set @s v.life 0","/scoreboard players set @s t.life 0"],
+					"transitions": [{"on_death": "q.is_alive"}]
+				}
+			}
+		},
+        "controller.animation.loadisk.player.movement": {
+            "initial_state": "is_idle",
+            "states": {
+                "is_idle": {
+                    "on_entry": ["/scoreboard players set @s v.idle 1"],
+                    "on_exit": ["/scoreboard players set @s v.idle 0","/scoreboard players set @s v.idle 0"],
+                    "transitions": [
+                        {"is_moving": "q.is_moving && !q.is_in_water && !q.is_sprinting"},
+                        {"is_sprinting": "!q.is_in_water && q.is_sprinting"},
+                        {"is_swimming": "!q.is_moving && q.is_in_water && !q.is_sprinting"}
+                    ]
+                },
+                "is_moving": {
+                    "on_entry": ["/scoreboard players set @s v.move 1"],
+                    "on_exit": ["/scoreboard players set @s v.move 0","/scoreboard players set @s t.move 0"],
+                    "transitions": [
+                        {"is_idle": "!q.is_moving && !q.is_in_water && !q.is_sprinting"},
+                        {"is_sprinting": "!q.is_in_water && q.is_sprinting"},
+                        {"is_swimming": "!q.is_moving && q.is_in_water && !q.is_sprinting"}
+                    ]
+                },
+                "is_sprinting": {
+                    "on_entry": ["/scoreboard players set @s v.sprint 1"],
+                    "on_exit": ["/scoreboard players set @s v.sprint 0","/scoreboard players set @s t.sprint 0"],
+                    "transitions": [
+                        {"is_idle": "!q.is_moving && !q.is_in_water && !q.is_sprinting"},
+                        {"is_moving": "q.is_moving && !q.is_in_water && !q.is_sprinting"},
+                        {"is_swimming": "!q.is_moving && q.is_in_water && !q.is_sprinting"}
+                    ]
+                },
+                "is_swimming": {
+                    "on_entry": ["/scoreboard players set @s v.swim 1"],
+                    "on_exit": ["/scoreboard players set @s v.swim 0","/scoreboard players set @s t.swim 0"],
+                    "transitions": [
+                        {"is_idle": "!q.is_moving && !q.is_in_water && !q.is_sprinting"},
+                        {"is_moving": "q.is_moving && !q.is_in_water && !q.is_sprinting"},
+                        {"is_sprinting": "!q.is_in_water && q.is_sprinting"}
+                    ]
+                }
+            }
+        },
+        "controller.animation.loadisk.player.jump": {
+            "initial_state": "state_filter",
+            "states": {
+                "state_filter": {"transitions": [{"is_jumping": "q.is_jumping"}]},
+                "is_jumping": {
+                    "on_entry": ["/scoreboard players set @s v.jump 1"],
+                    "on_exit": ["/scoreboard players set @s v.jump 0","/scoreboard players set @s t.jump 0"],
+                    "transitions": [{"state_filter": "!q.is_jumping"}]
+                }
+            }
+        },
+        "controller.animation.loadisk.player.sneak": {
+            "initial_state": "state_filter",
+            "states": {
+                "state_filter": {"transitions": [{"is_sneaking": "q.is_sneaking"}]},
+                "is_sneaking": {
+                    "on_entry": ["/scoreboard players set @s v.sneak 1"],
+                    "on_exit": ["/scoreboard players set @s v.sneak 0","/scoreboard players set @s t.sneak 0"],
+                    "transitions": [{"state_filter": "!q.is_sneaking"}]
+                }
+            }
+        },
+        "controller.animation.loadisk.player.sleep": {
+            "initial_state": "state_filter",
+            "states": {
+                "state_filter": {"transitions": [{"is_sleeping": "q.is_sleeping"}]},
+                "is_sleeping": {
+                    "on_entry": ["/scoreboard players set @s v.sleep 1"],
+                    "on_exit": ["/scoreboard players set @s v.sleep 0","/scoreboard players set @s t.sleep 0"],
+                    "transitions": [{"state_filter": "!q.is_sleeping"}]
+                }
+            }
+        },
+        "controller.animation.loadisk.player.ride": {
+            "initial_state": "state_filter",
+            "states": {
+                "state_filter": {"transitions": [{"is_riding": "q.is_riding"}]},
+                "is_riding": {
+                    "on_entry": ["/scoreboard players set @s v.ride 1"],
+                    "on_exit": ["/scoreboard players set @s v.ride 0","/scoreboard players set @s t.ride 0","/execute as @s[tag=is_flying] run function root/system/flight/rideNot"],
+                    "transitions": [{"state_filter": "!q.is_riding"}]
+                }
+            }
+        },
+        "controller.animation.loadisk.player.grounded": {
+            "initial_state": "state_filter",
+            "states": {
+                "state_filter": {"transitions": [{"is_grounded": "q.is_on_ground"}]},
+                "is_grounded": {
+                    "on_entry": ["/scoreboard players set @s v.ground 1"],
+                    "on_exit": ["/scoreboard players set @s v.ground 0","/scoreboard players set @s t.ground 0"],
+                    "transitions": [{"state_filter": "!q.is_on_ground"}]
+                }
+            }
+        },
+        "controller.animation.loadisk.player.underblock": {
+            "initial_state": "state_filter",
+            "states": {
+                "state_filter": {
+                    "transitions": [
+                        {"is_underground": "q.property('loadisk:underblock') && !q.is_in_water"},
+                        {"is_underwater": "q.property('loadisk:underblock') && q.is_in_water"}
+                    ]
+                },
+                "is_underground": {
+                    "on_entry": ["/scoreboard players set @s v.underground 1","/scoreboard players set @s v.underblock 1"],
+                    "on_exit": [
+                        "/scoreboard players set @s v.underground 0","/scoreboard players set @s t.underground 0",
+                        "/scoreboard players set @s v.underblock 0","/scoreboard players set @s t.underblock 0"
+                    ],
+                    "transitions": [{"state_filter": "!q.property('loadisk:underblock')"},{"is_underwater": "q.is_in_water"}]
+                },
+                "is_underwater": {
+                    "on_entry": ["/scoreboard players set @s v.underwater 1","/scoreboard players set @s v.underblock 1"],
+                    "on_exit": [
+                        "/scoreboard players set @s v.underwater 0","/scoreboard players set @s t.underwater 0",
+                        "/scoreboard players set @s v.underblock 0","/scoreboard players set @s t.underblock 0"
+                    ],
+                    "transitions": [{"state_filter": "!q.property('loadisk:underblock')"},{"is_underground": "!q.is_in_water"}]
+                }
+            }
+        },
+        "controller.animation.loadisk.player.light_level": {
+            "initial_state": "state_filter",
+            "states": {
+                "state_filter": {
+                    "transitions": [
+                        {"set.ll00": "q.property('loadisk:light_level') == 0"},
+                        {"set.ll01": "q.property('loadisk:light_level') == 1"},
+                        {"set.ll02": "q.property('loadisk:light_level') == 2"},
+                        {"set.ll03": "q.property('loadisk:light_level') == 3"},
+                        {"set.ll04": "q.property('loadisk:light_level') == 4"},
+                        {"set.ll05": "q.property('loadisk:light_level') == 5"},
+                        {"set.ll06": "q.property('loadisk:light_level') == 6"},
+                        {"set.ll07": "q.property('loadisk:light_level') == 7"},
+                        {"set.ll08": "q.property('loadisk:light_level') == 8"},
+                        {"set.ll09": "q.property('loadisk:light_level') == 9"},
+                        {"set.ll10": "q.property('loadisk:light_level') == 10"},
+                        {"set.ll11": "q.property('loadisk:light_level') == 11"},
+                        {"set.ll12": "q.property('loadisk:light_level') == 12"},
+                        {"set.ll13": "q.property('loadisk:light_level') == 13"},
+                        {"set.ll14": "q.property('loadisk:light_level') == 14"},
+                        {"set.ll15": "q.property('loadisk:light_level') == 15"}
+                    ]
+                },
+                "set.ll00": {
+                    "on_entry": ["/scoreboard players set @s v.light_level 0"],
+                    "transitions": [{"state_filter": "q.property('loadisk:light_level') != 0"}]
+                },
+                "set.ll01": {
+                    "on_entry": ["/scoreboard players set @s v.light_level 1"],
+                    "transitions": [{"state_filter": "q.property('loadisk:light_level') != 1"}]
+                },
+                "set.ll02": {
+                    "on_entry": ["/scoreboard players set @s v.light_level 2"],
+                    "transitions": [{"state_filter": "q.property('loadisk:light_level') != 2"}]
+                },
+                "set.ll03": {
+                    "on_entry": ["/scoreboard players set @s v.light_level 3"],
+                    "transitions": [{"state_filter": "q.property('loadisk:light_level') != 3"}]
+                },
+                "set.ll04": {
+                    "on_entry": ["/scoreboard players set @s v.light_level 4"],
+                    "transitions": [{"state_filter": "q.property('loadisk:light_level') != 4"}]
+                },
+                "set.ll05": {
+                    "on_entry": ["/scoreboard players set @s v.light_level 5"],
+                    "transitions": [{"state_filter": "q.property('loadisk:light_level') != 5"}]
+                },
+                "set.ll06": {
+                    "on_entry": ["/scoreboard players set @s v.light_level 6"],
+                    "transitions": [{"state_filter": "q.property('loadisk:light_level') != 6"}]
+                },
+                "set.ll07": {
+                    "on_entry": ["/scoreboard players set @s v.light_level 7"],
+                    "transitions": [{"state_filter": "q.property('loadisk:light_level') != 7"}]
+                },
+                "set.ll08": {
+                    "on_entry": ["/scoreboard players set @s v.light_level 8"],
+                    "transitions": [{"state_filter": "q.property('loadisk:light_level') != 8"}]
+                },
+                "set.ll09": {
+                    "on_entry": ["/scoreboard players set @s v.light_level 9"],
+                    "transitions": [{"state_filter": "q.property('loadisk:light_level') != 9"}]
+                },
+                "set.ll10": {
+                    "on_entry": ["/scoreboard players set @s v.light_level 10"],
+                    "transitions": [{"state_filter": "q.property('loadisk:light_level') != 10"}]
+                },
+                "set.ll11": {
+                    "on_entry": ["/scoreboard players set @s v.light_level 11"],
+                    "transitions": [{"state_filter": "q.property('loadisk:light_level') != 11"}]
+                },
+                "set.ll12": {
+                    "on_entry": ["/scoreboard players set @s v.light_level 12"],
+                    "transitions": [{"state_filter": "q.property('loadisk:light_level') != 12"}]
+                },
+                "set.ll13": {
+                    "on_entry": ["/scoreboard players set @s v.light_level 13"],
+                    "transitions": [{"state_filter": "q.property('loadisk:light_level') != 13"}]
+                },
+                "set.ll14": {
+                    "on_entry": ["/scoreboard players set @s v.light_level 14"],
+                    "transitions": [{"state_filter": "q.property('loadisk:light_level') != 14"}]
+                },
+                "set.ll15": {
+                    "on_entry": ["/scoreboard players set @s v.light_level 15"],
+                    "transitions": [{"state_filter": "q.property('loadisk:light_level') != 15"}]
+                }
+            }
+        },
+        "controller.animation.loadisk.player.hurt": {
+            "initial_state": "state_filter",
+            "states": {
+                "state_filter": {
+                    "transitions": [
+                        {"set.hurt00": "q.property('loadisk:hurt') == 0"},
+                        {"set.hurt01": "q.property('loadisk:hurt') == 1"}
+                    ]
+                },
+                "set.hurt00": {
+                    "on_entry": ["/scoreboard players set @s v.hurt 0"],
+                    "transitions": [{"state_filter": "q.property('loadisk:hurt') != 0"}]
+                },
+                "set.hurt01": {
+                    "on_entry": ["/scoreboard players set @s v.hurt 1"],
+                    "on_exit": ["/scoreboard players set @s t.hurt 0"],
+                    "transitions": [{"state_filter": "q.property('loadisk:hurt') != 1"}]
+                }
+            }
+        },
+        "controller.animation.loadisk.player.hit": {
+            "initial_state": "state_filter",
+            "states": {
+                "state_filter": {
+                    "transitions": [
+                        {"set.hurt00": "q.last_hit_by_player"}
+                    ]
+                },
+                "set.hurt00": {
+                    "on_entry": ["/say smack"],
+                    "transitions": [{"state_filter": "!q.last_hit_by_player"}]
+                }
+            }
+        },
+        "controller.animation.loadisk.player.temperature": {
+            "initial_state": "state_filter",
+            "states": {
+                "state_filter": {
+                    "transitions": [
+                        {"set.temp00": "q.property('loadisk:temperature') == 0"},
+                        {"set.temp01": "q.property('loadisk:temperature') == 1"},
+                        {"set.temp02": "q.property('loadisk:temperature') == 2"},
+                        {"set.temp03": "q.property('loadisk:temperature') == 3"}
+                    ]
+                },
+                "set.temp00": {
+                    "on_entry": ["/scoreboard players set @s v.temperature 0"],
+                    "transitions": [{"state_filter": "q.property('loadisk:temperature') != 0"}]
+                },
+                "set.temp01": {
+                    "on_entry": ["/scoreboard players set @s v.temperature 1"],
+                    "transitions": [{"state_filter": "q.property('loadisk:temperature') != 1"}]
+                },
+                "set.temp02": {
+                    "on_entry": ["/scoreboard players set @s v.temperature 2"],
+                    "transitions": [{"state_filter": "q.property('loadisk:temperature') != 2"}]
+                },
+                "set.temp03": {
+                    "on_entry": ["/scoreboard players set @s v.temperature 3"],
+                    "transitions": [{"state_filter": "q.property('loadisk:temperature') != 3"}]
+                }
+            }
+        }
+    }
+}

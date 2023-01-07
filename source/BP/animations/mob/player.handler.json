@@ -1,0 +1,63 @@
+{
+    "format_version": "1.10.0",
+    "animations": {
+        "animation.loadisk.player.join": {
+            "animation_length": 10.1,"loop": false,
+            "timeline": {"10.0": ["/function root/class/on_join"]}
+        },
+        "animation.loadisk.flight": {
+            "animation_length": 0.1,"loop": true,
+            "timeline": {"0.0": [
+                "/execute as @s run function root/system/flight/flight"
+            ]}
+        },
+        "animation.loadisk.hover": {
+            "animation_length": 1.2,
+            "loop": true,
+            "timeline": {
+                "0.0": [
+                    "/execute as @s[scores={v.mpip=1},rxm=-15,rx=15] run /effect @e[family=flyable,scores={v.mpip=1}] levitation 1 1 true",
+                    "/execute as @s[scores={v.mpip=2},rxm=-15,rx=15] run /effect @e[family=flyable,scores={v.mpip=2}] levitation 1 1 true",
+                    "/execute as @s[scores={v.mpip=3},rxm=-15,rx=15] run /effect @e[family=flyable,scores={v.mpip=3}] levitation 1 1 true",
+                    "/execute as @s[scores={v.mpip=4},rxm=-15,rx=15] run /effect @e[family=flyable,scores={v.mpip=4}] levitation 1 1 true",
+                    "/execute as @s[scores={v.mpip=5},rxm=-15,rx=15] run /effect @e[family=flyable,scores={v.mpip=5}] levitation 1 1 true",
+                    "/execute as @s[scores={v.mpip=6},rxm=-15,rx=15] run /effect @e[family=flyable,scores={v.mpip=6}] levitation 1 1 true",
+                    "/execute as @s[scores={v.mpip=7},rxm=-15,rx=15] run /effect @e[family=flyable,scores={v.mpip=7}] levitation 1 1 true",
+                    "/execute as @s[scores={v.mpip=8},rxm=-15,rx=15] run /effect @e[family=flyable,scores={v.mpip=8}] levitation 1 1 true",
+                    "/execute as @s[scores={v.mpip=9},rxm=-15,rx=15] run /effect @e[family=flyable,scores={v.mpip=9}] levitation 1 1 true",
+                    "/execute as @s[scores={v.mpip=10},rxm=-15,rx=15] run /effect @e[family=flyable,scores={v.mpip=0}] levitation 1 1 true"
+                ],
+                "1.2": [
+                    "/execute as @s[scores={v.mpip=1},rxm=-15,rx=15] run /effect @e[family=flyable,scores={v.mpip=1}] slow_falling 1 1 true",
+                    "/execute as @s[scores={v.mpip=2},rxm=-15,rx=15] run /effect @e[family=flyable,scores={v.mpip=2}] slow_falling 1 1 true",
+                    "/execute as @s[scores={v.mpip=3},rxm=-15,rx=15] run /effect @e[family=flyable,scores={v.mpip=3}] slow_falling 1 1 true",
+                    "/execute as @s[scores={v.mpip=4},rxm=-15,rx=15] run /effect @e[family=flyable,scores={v.mpip=4}] slow_falling 1 1 true",
+                    "/execute as @s[scores={v.mpip=5},rxm=-15,rx=15] run /effect @e[family=flyable,scores={v.mpip=5}] slow_falling 1 1 true",
+                    "/execute as @s[scores={v.mpip=6},rxm=-15,rx=15] run /effect @e[family=flyable,scores={v.mpip=6}] slow_falling 1 1 true",
+                    "/execute as @s[scores={v.mpip=7},rxm=-15,rx=15] run /effect @e[family=flyable,scores={v.mpip=7}] slow_falling 1 1 true",
+                    "/execute as @s[scores={v.mpip=8},rxm=-15,rx=15] run /effect @e[family=flyable,scores={v.mpip=8}] slow_falling 1 1 true",
+                    "/execute as @s[scores={v.mpip=9},rxm=-15,rx=15] run /effect @e[family=flyable,scores={v.mpip=9}] slow_falling 1 1 true",
+                    "/execute as @s[scores={v.mpip=10},rxm=-15,rx=15] run /effect @e[family=flyable,scores={v.mpip=10}] slow_falling 1 1 true"
+                ]
+            }
+        },
+        "animation.loadisk.flight.lock": {
+            "animation_length": 0.01,
+            "loop": true,
+            "timeline": {
+                "0.0": [
+                    "/ride @s[scores={v.mpip=1}] start_riding @e[family=flyable,scores={v.mpip=1}] teleport_ride",
+                    "/ride @s[scores={v.mpip=2}] start_riding @e[family=flyable,scores={v.mpip=2}] teleport_ride",
+                    "/ride @s[scores={v.mpip=3}] start_riding @e[family=flyable,scores={v.mpip=3}] teleport_ride",
+                    "/ride @s[scores={v.mpip=4}] start_riding @e[family=flyable,scores={v.mpip=4}] teleport_ride",
+                    "/ride @s[scores={v.mpip=5}] start_riding @e[family=flyable,scores={v.mpip=5}] teleport_ride",
+                    "/ride @s[scores={v.mpip=6}] start_riding @e[family=flyable,scores={v.mpip=6}] teleport_ride",
+                    "/ride @s[scores={v.mpip=7}] start_riding @e[family=flyable,scores={v.mpip=7}] teleport_ride",
+                    "/ride @s[scores={v.mpip=8}] start_riding @e[family=flyable,scores={v.mpip=8}] teleport_ride",
+                    "/ride @s[scores={v.mpip=9}] start_riding @e[family=flyable,scores={v.mpip=9}] teleport_ride",
+                    "/ride @s[scores={v.mpip=10}] start_riding @e[family=flyable,scores={v.mpip=10}] teleport_ride"
+                ]
+            }
+        }
+    }
+}

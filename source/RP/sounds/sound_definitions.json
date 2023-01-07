@@ -1,0 +1,28 @@
+{
+   "format_version": "1.14.0",
+   "sound_definitions": {
+      "loadisk.null": {"category": "neutral","sounds": ["sounds/null"]},
+      //Remove Vanilla Music
+      "music.game":{"category":"music","sounds":[]},
+      "music.game.basalt_deltas":{"category":"music","sounds":[]},
+      "music.game.creative":{"category":"music","sounds":[]},
+      "music.game.crimson_forest":{"category":"music","sounds":[]},
+      "music.game.dripstone_caves":{"category":"music","sounds":[]},
+      "music.game.end":{"category":"music","sounds":[]},
+      "music.game.endboss":{"category":"music","sounds":[]},
+      "music.game.frozen_peaks":{"category":"music","sounds":[]},
+      "music.game.grove":{"category":"music","sounds":[]},
+      "music.game.jagged_peaks":{"category":"music","sounds":[]},
+      "music.game.lush_caves":{"category":"music","sounds":[]},
+      "music.game.meadow":{"category":"music","sounds":[]},
+      "music.game.nether":{"category":"music","sounds":[]},
+      "music.game.nether_wastes":{"category":"music","sounds":[]},
+      "music.game.snowy_slopes":{"category":"music","sounds":[]},
+      "music.game.soul_sand_valley":{"category":"music","sounds":[]},
+      "music.game.soulsand_valley":{"category":"music","sounds":[]},
+      "music.game.stony_peaks":{"category":"music","sounds":[]},
+      "music.game.warped_forest":{"category":"music","sounds":[]},
+      "music.game.water":{"category":"music","sounds":[]},
+      "music.menu":{"category":"music","sounds":[]}
+   }
+}

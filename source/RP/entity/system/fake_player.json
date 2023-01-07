@@ -1,0 +1,61 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "loadisk:fake_player",
+      "materials": {"default": "entity_alphatest"},
+      "textures": {"default": "textures/entity/steve"},
+      "geometry": {"default": "geometry.humanoid.custom"},
+      "scripts": {
+        "scale": "0.9375",
+        "initialize": ["v.is_holding_right = 0.0;","v.is_first_person = this;"],
+        "pre_animation": [
+          "v.helmet_layer_visible = 1.0;",
+          "v.leg_layer_visible = 1.0;",
+          "v.boot_layer_visible = 1.0;",
+          "v.chest_layer_visible = 1.0;",
+          "v.attack_body_rot_y = Math.sin(360*Math.sqrt(v.attack_time)) * 5.0;",
+          "v.tcos0 = (math.cos(q.modified_distance_moved * 38.17) * q.modified_move_speed / v.gliding_speed_value) * 57.3;",
+          "v.first_person_rotation_factor = math.sin((1 - v.attack_time) * 180.0);",
+          "v.item_use_normalized = q.main_hand_item_use_duration / q.main_hand_item_max_duration;"
+        ],
+        "animate": ["root"]
+      },
+      "animations": {
+        "root": "controller.animation.loadisk.fake_player.root",
+        "base_controller": "controller.animation.player.base",
+        "humanoid_base_pose": "animation.humanoid.base_pose",
+        "look_at_target": "animation.humanoid.look_at_target.default",
+        "cape": "animation.player.cape",
+        "move.arms": "animation.player.move.arms",
+        "move.legs": "animation.player.move.legs",
+        "swimming": "animation.player.swim",
+        "swimming.legs": "animation.player.swim.legs",
+        "riding.arms": "animation.player.riding.arms",
+        "riding.legs": "animation.player.riding.legs",
+        "holding": "animation.player.holding",
+        "brandish_spear": "animation.humanoid.brandish_spear",
+        "holding_spyglass": "animation.humanoid.holding_spyglass",
+        "charging": "animation.humanoid.charging",
+        "attack.positions": "animation.player.attack.positions",
+        "attack.rotations": "animation.player.attack.rotations",
+        "sneaking": "animation.player.sneaking",
+        "damage_nearby_mobs": "animation.humanoid.damage_nearby_mobs",
+        "bow_and_arrow": "animation.humanoid.bow_and_arrow",
+        "use_item_progress": "animation.humanoid.use_item_progress",
+        "skeleton_attack": "animation.skeleton.attack",
+        "sleeping": "animation.player.sleeping",
+        "third_person_crossbow_equipped": "animation.player.crossbow_equipped",
+        "third_person_bow_equipped": "animation.player.bow_equipped",
+        "crossbow_hold": "animation.player.crossbow_hold",
+        "crossbow_controller": "controller.animation.loadisk.fake_player.crossbow",
+        "shield_block_main_hand": "animation.player.shield_block_main_hand",
+        "shield_block_off_hand": "animation.player.shield_block_off_hand",
+        "blink": "controller.animation.persona.blink",
+		    "tooting_goat_horn": "animation.humanoid.tooting_goat_horn"
+      },
+      "render_controllers": ["controller.render.default"],
+      "enable_attachables": true
+    }
+  }
+}

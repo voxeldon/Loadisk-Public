@@ -1,0 +1,69 @@
+{
+	"format_version": "1.8.0",
+	"animations": {
+		"animation.loadisk.block_grid.pos0": {
+			"loop": true,
+			"bones": {
+				"root": {
+					"rotation": [0, "0-query.body_y_rotation + (Math.round(query.body_y_rotation / 90) * 90)", 0]
+				}
+			}
+		},
+		"animation.loadisk.block_grid.pos45": {
+			"loop": true,
+			"bones": {
+				"root": {
+					"rotation": [0, "45-query.body_y_rotation + (Math.round(query.body_y_rotation / 90) * 90)", 0]
+				}
+			}
+		},
+		"animation.loadisk.block_grid.pos90": {
+			"loop": true,
+			"bones": {
+				"root": {
+					"rotation": [0, "90-query.body_y_rotation + (Math.round(query.body_y_rotation / 90) * 90)", 0]
+				}
+			}
+		},
+		"animation.loadisk.block_grid.pos135": {
+			"loop": true,
+			"bones": {
+				"root": {
+					"rotation": [0, "135-query.body_y_rotation + (Math.round(query.body_y_rotation / 90) * 90)", 0]
+				}
+			}
+		},
+		"animation.loadisk.block_grid.pos180": {
+			"loop": true,
+			"bones": {
+				"root": {
+					"rotation": [0, "180-query.body_y_rotation + (Math.round(query.body_y_rotation / 90) * 90)", 0]
+				}
+			}
+		},
+		"animation.loadisk.block_grid.pos225": {
+			"loop": true,
+			"bones": {
+				"root": {
+					"rotation": [0, "225-query.body_y_rotation + (Math.round(query.body_y_rotation / 90) * 90)", 0]
+				}
+			}
+		},
+		"animation.loadisk.block_grid.pos270": {
+			"loop": true,
+			"bones": {
+				"root": {
+					"rotation": [0, "270-query.body_y_rotation + (Math.round(query.body_y_rotation / 90) * 90)", 0]
+				}
+			}
+		},
+		"animation.loadisk.block_grid.pos315": {
+			"loop": true,
+			"bones": {
+				"root": {
+					"rotation": [0, "315-query.body_y_rotation + (Math.round(query.body_y_rotation / 90) * 90)", 0]
+				}
+			}
+		}
+	}
+}

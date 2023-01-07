@@ -1,0 +1,36 @@
+{
+	"format_version": "1.19.0",
+	"minecraft:entity": {
+		"description": {
+			"identifier": "loadisk:obj",
+			"is_spawnable": false,"is_summonable": true,"is_experimental": false,
+			"scripts": {"animate": ["life_time"]},
+			"animations": {"life_time": "controller.animation.loadisk.mob.lifetime"}
+		},
+		"component_groups": {
+			"loadisk:despawn": {"minecraft:transformation": {"delay": {"value": 0.1},"into": "minecraft:area_effect_cloud"}},
+			"loadisk:name.default": {
+				"minecraft:nameable": {"always_show": false,"allow_name_tag_renaming": false},
+				"minecraft:collision_box": {"width": 0.5,"height": 0.5}
+			},
+			"loadisk:name.always": {"minecraft:nameable": {"always_show": true,"allow_name_tag_renaming": false}},
+			"loadisk:is.path": {"minecraft:type_family": {"family": ["path","object","no_effect","system"]}}
+		},
+		"components": {
+			"minecraft:health": {"value": 0.5,"max": 0.5},
+			"minecraft:collision_box": {"width": 0,"height": 0},
+			"minecraft:physics": {"has_gravity": false,"has_collision": false},
+			"minecraft:pushable": {"is_pushable": false,"is_pushable_by_piston": false},
+			"minecraft:type_family": {"family": ["object","no_effect","system"]},
+			"minecraft:damage_sensor": {"triggers": {"cause": "all","deals_damage": false}}
+		},
+		"events": {
+			"loadisk:despawn_event": {"add": {"component_groups": ["loadisk:despawn"]}},
+			"loadisk:add.name_default_event": {"add": {"component_groups": ["loadisk:name.default"]}},
+			"loadisk:add.name_always_event": {"add": {"component_groups": ["loadisk:name.always"]}},
+			"loadisk:kill.name_event": {"remove": {"component_groups": ["loadisk:name.always","loadisk:name.default"]}},
+			"loadisk:add.path_event": {"add": {"component_groups": ["loadisk:is.path"]}},
+			"loadisk:kill.path_event": {"remove": {"component_groups": ["loadisk:is.path"]}}
+		}
+	}
+}

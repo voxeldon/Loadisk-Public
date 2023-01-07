@@ -1,0 +1,51 @@
+{
+	"format_version": "1.8.0",
+	"animations": {
+		"animation.loadisk.npc.idle": {
+			"loop": true,
+			"animation_length": 2,
+			"anim_time_update": "0.5 * query.delta_time + query.anim_time",
+			"bones": {
+				"body": {
+					"position": [0, "math.cos(query.life_time * -360.0) * 0.08", 0],
+					"scale": {
+						"0.0": [1, 1, 1],
+						"1.0": [1.01, 1.01, 1.01],
+						"2.0": [1, 1, 1]
+					}
+				},
+				"head": {
+					"rotation": ["math.cos(query.life_time * -360.0) * 0.5 ", 0, 0],
+					"scale": {
+						"0.0": [1, 1, 1],
+						"1.0": [0.99, 0.99, 0.99],
+						"2.0": [1, 1, 1]
+					}
+				},
+				"leftArm": {
+					"rotation": [0, 0, "math.cos(query.life_time * -360.0) * 1.0  "]
+				},
+				"rightArm": {
+					"rotation": [0, 0, "math.cos(query.life_time * 360.0) * -1.0  "]
+				}
+			}
+		},
+		"animation.loadisk.npc.speech": {
+			"loop": true,
+			"bones": {
+				"head": {
+					"rotation": ["math.cos(query.life_time * -360.0 * 2) * 2.5", "math.cos(query.life_time * -360.0) * 1", 0]
+				}
+			}
+		},
+		"animation.loadisk.npc.sleeping": {
+			"loop": true,
+			"bones": {
+				"root": {
+					"rotation": [-90, 0, 0],
+					"position": [0, 2, -15]
+				}
+			}
+		}
+	}
+}

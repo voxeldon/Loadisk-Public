@@ -1,0 +1,75 @@
+{
+	"format_version" : "1.10.0",
+	"animation_controllers" : {
+		"controller.animation.loadisk.fake_player.crossbow" : {
+			"initial_state" : "default",
+			"states" : {
+				"charge" : {
+					"animations" : [ "third_person_crossbow_equipped" ],
+					"transitions" : [
+						{
+							"default" : "query.get_equipped_item_name != 'crossbow' || (query.item_remaining_use_duration <= 0.0 && !query.item_is_charged)"
+						},
+						{
+							"hold" : "query.item_is_charged"
+						}
+					]
+				},
+				"default" : {
+					"transitions" : [
+						{
+							"hold" : "query.item_is_charged"
+						},
+						{
+							"charge" : "query.item_remaining_use_duration > 0.0"
+						}
+					]
+				},
+				"hold" : {
+					"animations" : [ "crossbow_hold" ],
+					"transitions" : [
+						{
+							"default" : "query.get_equipped_item_name != 'crossbow' || (query.item_remaining_use_duration <= 0.0 && !query.item_is_charged)"
+						},
+						{
+							"charge" : "query.item_remaining_use_duration > 0.0"
+						}
+					]
+				}
+			}
+		},
+		"controller.animation.loadisk.fake_player.root" : {
+			"initial_state" : "third_person",
+			"states" : {
+				"third_person" : {
+					"animations" : [
+						"humanoid_base_pose",
+						"move.arms",
+						"move.legs",
+						"cape",
+						"holding",
+						{"look_at_target" : "!query.is_sleeping && !query.is_emoting"},
+						{"riding.arms" : "query.is_riding"},
+						{"riding.legs" : "query.is_riding"},
+						{"brandish_spear" : "variable.is_brandishing_spear"},
+						{"holding_spyglass": "variable.is_holding_spyglass"},
+						{"charging" : "query.is_charging"},
+						{"sneaking" : "query.is_sneaking && !query.is_sleeping"},
+						{"damage_nearby_mobs" : "variable.damage_nearby_mobs"},
+						{"swimming" : "variable.swim_amount > 0.0"},
+						{"swimming.legs" : "variable.swim_amount > 0.0"},
+						{"use_item_progress": "( variable.use_item_interval_progress > 0.0 ) || ( variable.use_item_startup_progress > 0.0 ) && !variable.is_brandishing_spear && !variable.is_holding_spyglass && !variable.is_tooting_goat_horn && !query.is_item_name_any('slot.weapon.mainhand', 'minecraft:bow')"},
+						{"sleeping" : "query.is_sleeping && query.is_alive"},
+						{"attack.positions" : "variable.attack_time >= 0.0"},
+						{"attack.rotations" : "variable.attack_time >= 0.0"},
+						{"shield_block_main_hand" : "query.blocking && query.get_equipped_item_name('off_hand') != 'shield' && query.get_equipped_item_name == 'shield'"},
+						{"shield_block_off_hand" : "query.blocking && query.get_equipped_item_name('off_hand') == 'shield'"},
+						{"crossbow_controller" : "query.get_equipped_item_name == 'crossbow'"},
+						{"third_person_bow_equipped" : "query.get_equipped_item_name == 'bow' && (variable.item_use_normalized > 0 && variable.item_use_normalized < 1.0)"},
+						{"tooting_goat_horn": "variable.is_tooting_goat_horn"}
+					]
+				}
+			}
+		}
+	}
+}

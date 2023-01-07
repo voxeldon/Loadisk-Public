@@ -1,0 +1,79 @@
+{
+  "format_version": "1.8.0",
+  "render_controllers": {
+    "controller.render.loadisk.2_texture": {
+      "arrays": {
+        "textures": {
+          "Array.skins": [
+            "Texture.skin00",
+            "Texture.skin01"
+          ]
+        }
+      },
+      "geometry": "Geometry.default",
+      "materials": [
+        { "*": "Material.default" }
+      ],
+      "textures": [
+        "Array.skins[query.skin_id]"
+      ]
+    },
+    "controller.render.loadisk.3_texture": {
+      "arrays": {
+        "textures": {
+          "Array.skins": [
+            "Texture.skin00",
+            "Texture.skin01",
+            "Texture.skin02"
+          ]
+        }
+      },
+      "geometry": "Geometry.default",
+      "materials": [
+        { "*": "Material.default" }
+      ],
+      "textures": [
+        "Array.skins[query.skin_id]"
+      ]
+    },
+    "controller.render.loadisk.4_texture": {
+      "arrays": {
+        "textures": {
+          "Array.skins": [
+            "Texture.skin00",
+            "Texture.skin01",
+            "Texture.skin02",
+            "Texture.skin03"
+          ]
+        }
+      },
+      "geometry": "Geometry.default",
+      "materials": [
+        { "*": "Material.default" }
+      ],
+      "textures": [
+        "Array.skins[query.skin_id]"
+      ]
+    },
+    "controller.render.loadisk.5_texture": {
+      "arrays": {
+        "textures": {
+          "Array.skins": [
+            "Texture.skin00",
+            "Texture.skin01",
+            "Texture.skin02",
+            "Texture.skin03",
+            "Texture.skin04"
+          ]
+        }
+      },
+      "geometry": "Geometry.default",
+      "materials": [
+        { "*": "Material.default" }
+      ],
+      "textures": [
+        "Array.skins[query.skin_id]"
+      ]
+    }
+  }
+}

@@ -1,0 +1,34 @@
+pack.name=Loadisk
+pack.description=Bedrock Addon Framework : Public beta 1.0.0 
+loadisk.version=§6Loadisk Beta 1.0.0
+icon=⨀
+
+debug.mpip=MPIP§r %2
+debug.idle= Idle§r %2
+debug.move= Move§r %2
+debug.sprint= Sprint§r %2
+debug.swim= Swim§r %2
+debug.sneak= Sneak§r %2
+debug.jump= Jump§r %2
+debug.ride= Ride§r %2
+debug.right= InR§r %2
+debug.left= InL§r %2
+debug.db= DB§r %2
+debug.sleep= Sleep§r %2
+debug.light_level= Light§r %2
+debug.near_player= NBP§r %2
+debug.near_entity= NBE§r %2
+debug.hurt= Hurt§r %2
+debug.temp= Temp§r %2
+
+player.online= §6is online!
+
+choice.init00=§l§6[!]§rAre you sure you want to reset? Run §l/function/yes §nto §l§2confirm §ror §n§lfunction/no §rto §l§4cancel.
+choice.init01=§l§6[!]§r§6Initalizing: §rGame reset.
+choice.common.yes=§l§2Confirmed
+choice.common.no=§l§4Canceled
+
+howtoplay.category.loadisk=Loadisk
+howtoplay.loadisk=Loadisk
+howtoplay.loadisk.title=loadisk
+loadisk.ui.text00=Bedrock addon fraimwork.

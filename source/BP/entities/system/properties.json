@@ -1,0 +1,46 @@
+//Query Examples
+//q.property('loadisk:int') = 0;
+{
+    "format_version": "1.19.50",
+    "minecraft:entity": {
+        "description": {
+            "identifier": "loadisk:properties",
+            "is_spawnable": false,"is_summonable": true,
+			"scripts": {"animate": ["prop.test"]},
+			"animations": {"prop.test": "controller.animation.loadisk.prop.test"},
+            "properties": {
+                "loadisk:bool":  {"type": "bool", "default": false}, 
+                "loadisk:int":   {"type": "int",  "range":  [0,4],"default": 0},
+                "loadisk:float": {"type": "float","range":  [0.0,30.0],"default": "math.random(20, 25)"},
+                "loadisk:array": {"type": "enum", "values": ["x","y","z"],"default": "x","client_sync": true}
+            }
+        },
+        "components":{
+            "minecraft:interact": {
+                "interactions": [
+                    {
+                        "on_interact": {
+                            "filters": {
+                                "all_of": [
+                                    {"test":"int_property",   "subject":"self", "domain":"loadisk:int",     "operator":">" ,"value":4},
+                                    {"test":"bool_property",  "subject":"self", "domain":"loadisk:bool",    "operator":"==","value":true},
+                                    {"test":"float_property", "subject":"self", "domain":"loadisk:float",   "operator":">" ,"value":4.5},
+                                    {"test":"enum_property",  "subject":"self", "domain":"loadisk:array",   "operator":"!=","value":"blue"},
+                                    {"test":"has_property",   "subject":"self", "value":"loadisk:property", "operator":"=="}
+                                ]
+                            },
+                            "event": "loadisk:set.prop",
+                            "target": "self"
+                        }
+                    }
+                ]
+            }
+        },
+        "events": {
+            "loadisk:set.prop":   {"set_property": {"loadisk:int": 0}},
+            "loadisk:bool.prop":  {"set_property": { "loadisk:bool": false}},
+            "loadisk:array.prop": {"set_property": { "loadisk:array": "x"}},
+            "loadisk:math.prop":  {"set_property": {"loadisk:float": "q.property('loadisk:int') + 1"}}
+        }
+    }
+}

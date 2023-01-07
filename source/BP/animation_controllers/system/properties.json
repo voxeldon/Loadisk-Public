@@ -1,0 +1,19 @@
+{
+    "format_version": "1.10.0",
+    "animation_controllers": {
+        "controller.animation.loadisk.prop.test": {
+            "initial_state": "state_filter",
+            "states": {
+                "state_filter": {
+                    "transitions": [
+                        {"test": "q.property('loadisk:int') == 0"}
+                    ]
+                },
+                "test": {
+                    "transitions": [{"state_filter": "q.property('loadisk:int') != 0"}],
+                    "on_entry":["/say running"]
+                }
+            }
+        }
+    }
+}

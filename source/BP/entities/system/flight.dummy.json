@@ -1,0 +1,65 @@
+{
+	"format_version": "1.18.0",
+	"minecraft:entity": {
+		"description": {
+			"identifier": "loadisk:flight.dummy",
+			"is_spawnable": false,"is_summonable": true,"is_experimental": false,
+			"scripts": {"animate": ["init"]},
+			"animations": {"init": "controller.animation.loadisk.flight.init"}
+		},
+		"component_groups": {
+			"loadisk:despawn": {"minecraft:instant_despawn": {}},
+			"loadisk:player01": {"minecraft:variant": {"value": 1}},
+			"loadisk:player02": {"minecraft:variant": {"value": 2}},
+			"loadisk:player03": {"minecraft:variant": {"value": 3}},
+			"loadisk:player04": {"minecraft:variant": {"value": 4}},
+			"loadisk:player05": {"minecraft:variant": {"value": 5}},
+			"loadisk:player06": {"minecraft:variant": {"value": 6}},
+			"loadisk:player07": {"minecraft:variant": {"value": 7}},
+			"loadisk:player08": {"minecraft:variant": {"value": 8}},
+			"loadisk:player09": {"minecraft:variant": {"value": 9}},
+			"loadisk:player10": {"minecraft:variant": {"value": 10}}
+		},
+		"components": {
+			"minecraft:variant": {"value": 0},
+            "minecraft:input_ground_controlled": {},
+            "minecraft:can_power_jump": {},
+			"minecraft:health": {"value": 0.5,"max": 0.5},
+			"minecraft:collision_box": {"width": 0.5,"height": 0.5},
+			"minecraft:physics": {"has_gravity": true,"has_collision": true},
+			"minecraft:pushable": {"is_pushable": false,"is_pushable_by_piston": false},
+			"minecraft:type_family": {"family": ["flyable","no_effect","system"]},
+			"minecraft:damage_sensor": {"triggers": {"cause": "all","deals_damage": false}},
+            "minecraft:jump.static": {},
+			"minecraft:movement.generic": {},
+			"minecraft:movement": {"value": 0.20},
+			"minecraft:navigation.generic": {"can_jump": true,"can_walk": true},
+            "minecraft:horse.jump_strength": {"value": 0.6},
+            "minecraft:behavior.player_ride_tamed": {},
+            "minecraft:behavior.mount_pathing": {
+                "priority": 0,
+                //"speed_multiplier": 1.5,
+                "target_dist": 0.0,
+                "track_target": true
+            },
+            "minecraft:rideable": {
+                "seat_count": 1,
+                "family_types": ["player"],
+                "seats": {"position": [0, 0, 0]}
+            }
+		},
+		"events": {
+			"loadisk:despawn_event": {"add": {"component_groups": ["loadisk:despawn"]}},
+			"loadisk:spawn.player01_event": {"add": {"component_groups": ["loadisk:player01"]}},
+			"loadisk:spawn.player02_event": {"add": {"component_groups": ["loadisk:player02"]}},
+			"loadisk:spawn.player03_event": {"add": {"component_groups": ["loadisk:player03"]}},
+			"loadisk:spawn.player04_event": {"add": {"component_groups": ["loadisk:player04"]}},
+			"loadisk:spawn.player05_event": {"add": {"component_groups": ["loadisk:player05"]}},
+			"loadisk:spawn.player06_event": {"add": {"component_groups": ["loadisk:player06"]}},
+			"loadisk:spawn.player07_event": {"add": {"component_groups": ["loadisk:player07"]}},
+			"loadisk:spawn.player08_event": {"add": {"component_groups": ["loadisk:player08"]}},
+			"loadisk:spawn.player09_event": {"add": {"component_groups": ["loadisk:player09"]}},
+			"loadisk:spawn.player10_event": {"add": {"component_groups": ["loadisk:player10"]}}
+		}
+	}
+}

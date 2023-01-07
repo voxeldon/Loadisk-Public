@@ -1,0 +1,21 @@
+{
+	"format_version": "1.18.0",
+	"minecraft:entity": {
+		"description": {
+			"identifier": "loadisk:ram",
+			"is_spawnable": false,"is_summonable": true,"is_experimental": false,
+			"scripts": {"animate": ["world_time"]},
+			"animations": {"world_time": "controller.animation.loadisk.world_time"}
+		},
+		"component_groups": {"loadisk:despawn": {"minecraft:instant_despawn": {}}},
+		"components": {
+			"minecraft:health": {"value": 0.5,"max": 0.5},
+			"minecraft:collision_box": {"width": 0.5,"height": 0.5},
+			"minecraft:physics": {"has_gravity": false,"has_collision": false},
+			"minecraft:pushable": {"is_pushable": false,"is_pushable_by_piston": false},
+			"minecraft:type_family": {"family": ["ram","no_effect","system"]},
+			"minecraft:damage_sensor": {"triggers": {"cause": "all","deals_damage": false}}
+		},
+		"events": {"loadisk:despawn_event": {"add": {"component_groups": ["loadisk:despawn"]}}}
+	}
+}

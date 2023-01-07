@@ -1,0 +1,12 @@
+{
+	"format_version": "1.10.0",
+	"minecraft:client_entity": {
+		"description": {
+			"identifier": "loadisk:obj",
+			"materials": {"default": "entity"},
+			"textures": {"default": "textures/null"},
+			"geometry": {"default": "geometry.loadisk.null"},
+			"render_controllers": ["controller.render.default"]
+		}
+	}
+}

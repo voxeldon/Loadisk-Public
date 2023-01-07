@@ -1,0 +1,53 @@
+{
+    "format_version": "1.10.0",
+    "animation_controllers": {
+        "controller.animation.ld.common.nav": {
+            "initial_state": "idle",
+            "states": {
+                "idle": {
+                    "animations": ["idle"],
+                    "blend_transition": 0.3,
+                    "transitions": [
+                        {"move": "q.ground_speed > 0.0 && !q.is_avoiding_mobs"},
+                        {"run": "q.ground_speed > 0.0 && q.is_avoiding_mobs"}
+                    ]
+                },
+                "move": {
+                    "blend_transition": 0.3,
+                    "transitions": [
+                        {"idle": "q.ground_speed <= 0.0"},
+                        {"run": "q.ground_speed > 0.0 && q.is_avoiding_mobs"}
+                    ],
+                    "animations": ["move"]
+                },
+                "run": {
+                    "blend_transition": 0.3,
+                    "transitions": [
+                        {"idle": "q.ground_speed <= 0.0"},
+                        {"move": "q.ground_speed > 0.0 && !q.is_avoiding_mobs"}
+                    ],
+                    "animations": ["run"]
+                }
+            }
+        },
+        "controller.animation.ld.common.action": {
+            "initial_state": "idle",
+            "states": {
+                "idle": {
+                    "blend_transition": 0.3,
+                    "transitions": [{"action": "q.is_sheared"}]
+                },
+                "action": {
+                    "blend_transition": 0.3,
+                    "transitions": [{"idle.tran": "q.all_animations_finished"}],
+                    "animations": ["action"]
+                },
+                "idle.tran": {
+                    "blend_transition": 0.3,
+                    "transitions": [{"idle": "!q.is_sheared"}],
+                    "animations": ["idle"]
+                }
+            }
+        }
+    }
+}
