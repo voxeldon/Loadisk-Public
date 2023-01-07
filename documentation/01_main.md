@@ -1,4 +1,5 @@
 ## **Loadisk**
+![Logo](https://github.com/voxeldon/Loadisk-Public/blob/main/source/RP/textures/ui/loadisk_logo.png?raw=true)
 
 Loadisk is a tool  that acts as a query & filter converter that takes all potential action inputs from the world and player and turns them into variables readable through scoreboards.
 
