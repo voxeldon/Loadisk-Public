@@ -41,6 +41,8 @@
   > Return (1) when player left'Punch' input is triggered else return 0
 - **v.right** 
   > Return (1) when player right'Eat' input is triggered else return 0
+- **v.v.equipped**
+  > Return (1) if player is holding an item
 - **v.life** 
   > Return (1) if player is dead else return 0
 - **v.move** 
@@ -77,5 +79,11 @@
   > Return (1) if player has lost health
 - **v.temperature**
   > Return (0-3) for player detected temperature value. (0 Cold, 1 Mild, 2 Ocean, 3 Warm)
+
+
+## Player Events
+
+- **loadisk:set.dmg(X)_event**
+  > set player damage output (loadisk:set.dmg00_event-loadisk:set.dmg10_event)
 
 [Back](https://github.com/Voxel-Lab-Studios/Loadisk/blob/main/documentation/01_main.md)

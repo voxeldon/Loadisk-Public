@@ -18,6 +18,7 @@
         "ground.c": "controller.animation.loadisk.player.grounded",
         "u_block.c": "controller.animation.loadisk.player.underblock",
         "light_level.c": "controller.animation.loadisk.player.light_level",
+        "equipped.c": "controller.animation.loadisk.equipped",
         "hurt.c": "controller.animation.loadisk.player.hurt",
         "hit.c": "controller.animation.loadisk.player.hit",
         "temp.c": "controller.animation.loadisk.player.temperature",
@@ -35,6 +36,17 @@
       }
     },
     "component_groups": {
+      "loadisk:attack.dmg00":{"minecraft:attack": {"damage": 0}},
+      "loadisk:attack.dmg01":{"minecraft:attack": {"damage": 1}},
+      "loadisk:attack.dmg02":{"minecraft:attack": {"damage": 2}},
+      "loadisk:attack.dmg03":{"minecraft:attack": {"damage": 3}},
+      "loadisk:attack.dmg04":{"minecraft:attack": {"damage": 4}},
+      "loadisk:attack.dmg05":{"minecraft:attack": {"damage": 5}},
+      "loadisk:attack.dmg06":{"minecraft:attack": {"damage": 6}},
+      "loadisk:attack.dmg07":{"minecraft:attack": {"damage": 7}},
+      "loadisk:attack.dmg08":{"minecraft:attack": {"damage": 8}},
+      "loadisk:attack.dmg09":{"minecraft:attack": {"damage": 9}},
+      "loadisk:attack.dmg10":{"minecraft:attack": {"damage": 10}},
       "loadisk:is_flying":{"minecraft:can_fly":{}},
       "loadisk:custom_achievement":{
         "minecraft:skin_id":{"value": 1},
@@ -53,6 +65,7 @@
       }
     },
     "components": {
+      "minecraft:attack": {"damage": 1},
       "minecraft:experience_reward": {"on_death": "Math.Min(query.player_level * 7, 100)"},
       "minecraft:type_family": {"family": [ "player" ]},
       "minecraft:is_hidden_when_invisible": {},
@@ -68,7 +81,6 @@
           }
         ]
       },
-      "minecraft:attack": {"damage": 1},
       "minecraft:exhaustion_values": {
         "heal": 6,"jump": 0.05,"sprint_jump": 0.2,"mine": 0.005,
         "attack": 0.1,"damage": 0.1,"walk": 0.0,"sprint": 0.1,"swim": 0.01
@@ -150,6 +162,105 @@
       },
       "loadisk:is_flying_event": {"add": {"component_groups": ["loadisk:is_flying"]}},
 			"loadisk:kill.is_flying_event": {"remove": {"component_groups": ["loadisk:is_flying"]}},
+      "loadisk:set.dmg00_event": {
+          "add": {"component_groups": ["loadisk:attack.dmg00"]},
+          "remove": {
+            "component_groups": [
+            "loadisk:attack.dmg01","loadisk:attack.dmg02","loadisk:attack.dmg03","loadisk:attack.dmg04","loadisk:attack.dmg05",
+            "loadisk:attack.dmg06","loadisk:attack.dmg07","loadisk:attack.dmg08","loadisk:attack.dmg09","loadisk:attack.dmg10"
+          ]
+        }
+      },
+      "loadisk:set.dmg01_event": {
+        "add": {"component_groups": ["loadisk:attack.dmg01"]},
+        "remove": {
+          "component_groups": [
+          "loadisk:attack.dmg00","loadisk:attack.dmg02","loadisk:attack.dmg03","loadisk:attack.dmg04","loadisk:attack.dmg05",
+          "loadisk:attack.dmg06","loadisk:attack.dmg07","loadisk:attack.dmg08","loadisk:attack.dmg09","loadisk:attack.dmg10"
+          ]
+        }
+      },
+      "loadisk:set.dmg02_event": {
+        "add": {"component_groups": ["loadisk:attack.dmg02"]},
+        "remove": {
+          "component_groups": [
+          "loadisk:attack.dmg01","loadisk:attack.dmg00","loadisk:attack.dmg03","loadisk:attack.dmg04","loadisk:attack.dmg05",
+          "loadisk:attack.dmg06","loadisk:attack.dmg07","loadisk:attack.dmg08","loadisk:attack.dmg09","loadisk:attack.dmg10"
+          ]
+        }
+      },
+      "loadisk:set.dmg03_event": {
+        "add": {"component_groups": ["loadisk:attack.dmg03"]},
+        "remove": {
+          "component_groups": [
+          "loadisk:attack.dmg01","loadisk:attack.dmg02","loadisk:attack.dmg00","loadisk:attack.dmg04","loadisk:attack.dmg05",
+          "loadisk:attack.dmg06","loadisk:attack.dmg07","loadisk:attack.dmg08","loadisk:attack.dmg09","loadisk:attack.dmg10"
+          ]
+        }
+      },
+      "loadisk:set.dmg04_event": {
+        "add": {"component_groups": ["loadisk:attack.dmg04"]},
+        "remove": {
+          "component_groups": [
+          "loadisk:attack.dmg01","loadisk:attack.dmg02","loadisk:attack.dmg03","loadisk:attack.dmg00","loadisk:attack.dmg05",
+          "loadisk:attack.dmg06","loadisk:attack.dmg07","loadisk:attack.dmg08","loadisk:attack.dmg09","loadisk:attack.dmg10"
+          ]
+        }
+      },
+      "loadisk:set.dmg05_event": {
+        "add": {"component_groups": ["loadisk:attack.dmg05"]},
+        "remove": {
+          "component_groups": [
+          "loadisk:attack.dmg01","loadisk:attack.dmg02","loadisk:attack.dmg03","loadisk:attack.dmg04","loadisk:attack.dmg00",
+          "loadisk:attack.dmg06","loadisk:attack.dmg07","loadisk:attack.dmg08","loadisk:attack.dmg09","loadisk:attack.dmg10"
+          ]
+        }
+      },
+      "loadisk:set.dmg06_event": {
+        "add": {"component_groups": ["loadisk:attack.dmg06"]},
+        "remove": {
+          "component_groups": [
+          "loadisk:attack.dmg01","loadisk:attack.dmg02","loadisk:attack.dmg03","loadisk:attack.dmg04","loadisk:attack.dmg05",
+          "loadisk:attack.dmg00","loadisk:attack.dmg07","loadisk:attack.dmg08","loadisk:attack.dmg09","loadisk:attack.dmg10"
+          ]
+        }
+      },
+      "loadisk:set.dmg07_event": {
+        "add": {"component_groups": ["loadisk:attack.dmg07"]},
+        "remove": {
+          "component_groups": [
+          "loadisk:attack.dmg01","loadisk:attack.dmg02","loadisk:attack.dmg03","loadisk:attack.dmg04","loadisk:attack.dmg05",
+          "loadisk:attack.dmg06","loadisk:attack.dmg00","loadisk:attack.dmg08","loadisk:attack.dmg09","loadisk:attack.dmg10"
+          ]
+        }
+      },
+      "loadisk:set.dmg08_event": {
+        "add": {"component_groups": ["loadisk:attack.dmg08"]},
+        "remove": {
+          "component_groups": [
+          "loadisk:attack.dmg01","loadisk:attack.dmg02","loadisk:attack.dmg03","loadisk:attack.dmg04","loadisk:attack.dmg05",
+          "loadisk:attack.dmg06","loadisk:attack.dmg07","loadisk:attack.dmg00","loadisk:attack.dmg09","loadisk:attack.dmg10"
+          ]
+        }
+      },
+      "loadisk:set.dmg09_event": {
+        "add": {"component_groups": ["loadisk:attack.dmg09"]},
+        "remove": {
+          "component_groups": [
+          "loadisk:attack.dmg01","loadisk:attack.dmg02","loadisk:attack.dmg03","loadisk:attack.dmg04","loadisk:attack.dmg05",
+          "loadisk:attack.dmg06","loadisk:attack.dmg07","loadisk:attack.dmg08","loadisk:attack.dmg00","loadisk:attack.dmg10"
+          ]
+        }
+      },
+      "loadisk:set.dmg10_event": {
+        "add": {"component_groups": ["loadisk:attack.dmg10"]},
+        "remove": {
+          "component_groups": [
+          "loadisk:attack.dmg01","loadisk:attack.dmg02","loadisk:attack.dmg03","loadisk:attack.dmg04","loadisk:attack.dmg05",
+          "loadisk:attack.dmg06","loadisk:attack.dmg07","loadisk:attack.dmg08","loadisk:attack.dmg09","loadisk:attack.dmg00"
+          ]
+        }
+      },
       "loadisk:set.ll00_event": {"set_property": { "loadisk:light_level": 0}},
       "loadisk:set.ll01_event": {"set_property": { "loadisk:light_level": 1}},
       "loadisk:set.ll02_event": {"set_property": { "loadisk:light_level": 2}},

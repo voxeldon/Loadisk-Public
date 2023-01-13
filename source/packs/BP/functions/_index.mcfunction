@@ -1,7 +1,5 @@
 ##----------------------------------------------------------------------------
-## Item : Empty item example.
+## INDEX
 ##----------------------------------------------------------------------------
-#Entry
-say hello_world
-#Close>>>
-scoreboard players set @s t.left 1
+function _main
+function root/system/getDb

@@ -15,7 +15,7 @@ This  allows users to create addons without using the player.json or tick.json f
 
 - [Getting Started](https://github.com/voxeldon/Loadisk-Public/blob/main/documentation/feature/getstarted.md)
 
-- [Variables](https://github.com/voxeldon/Loadisk-Public/blob/main/documentation/feature/variable.md)
+- [Variables & Events](https://github.com/voxeldon/Loadisk-Public/blob/main/documentation/feature/variable.md)
 
 - [Controllers](https://github.com/voxeldon/Loadisk-Public/blob/main/documentation/feature/controllers.md)
 

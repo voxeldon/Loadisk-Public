@@ -7,7 +7,7 @@
                 "state_filter": {"transitions": [{"controllers": "(1.0)"}]},
                 "controllers": {
                     "animations": [
-                        "lifetime.c","input.c","movement.c","jump.c","sneak.c","sleep.c","ride.c","ground.c","u_block.c","flight.c","light_level.c","hurt.c","temp.c","hit.c"
+                        "lifetime.c","input.c","movement.c","jump.c","sneak.c","sleep.c","ride.c","ground.c","u_block.c","flight.c","light_level.c","hurt.c","temp.c","hit.c","equipped.c"
                     ],
                     "transitions": [{"state_filter": "q.all_animations_finished"}]
                 }
@@ -333,6 +333,19 @@
                     "transitions": [{"state_filter": "q.property('loadisk:temperature') != 3"}]
                 }
             }
-        }
+        },
+        "controller.animation.loadisk.equipped": {
+			"initial_state": "unequipped",
+			"states": {
+				"equipped": {"transitions": [{"unequipped": "q.get_equipped_item_name == ''"}]},
+				"unequipped": {
+					"transitions": [
+						{"equipped": "q.get_equipped_item_name != ''"}
+					],
+					"on_entry": ["/scoreboard players set @s v.equipped 0","/scoreboard players set @s t.equipped 0"],
+					"on_exit": ["/scoreboard players set @s v.equipped 1"]
+				}
+			}
+		}
     }
 }

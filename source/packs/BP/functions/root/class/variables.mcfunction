@@ -4,6 +4,8 @@
 # Data
 scoreboard objectives add var dummy Variables
 scoreboard objectives add const dummy Consts
+scoreboard objectives add int dummy Integer
+scoreboard objectives add rng dummy Randomizer
 scoreboard players add "Init" var 0
 scoreboard players set "Init" const 0
 # System Variables
@@ -46,6 +48,7 @@ scoreboard objectives add v.near_player dummy
 scoreboard objectives add v.near_entity dummy
 scoreboard objectives add v.hurt dummy
 scoreboard objectives add v.temperature dummy
+scoreboard objectives add v.equipped dummy
 
 # Temporary Variables
 scoreboard objectives add t.choice dummy
@@ -82,3 +85,4 @@ scoreboard objectives add t.underground dummy
 scoreboard objectives add t.underwater dummy
 scoreboard objectives add t.join dummy
 scoreboard objectives add t.hurt dummy
+scoreboard objectives add t.equipped dummy
