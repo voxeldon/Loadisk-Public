@@ -41,7 +41,7 @@
   > Return (1) when player left'Punch' input is triggered else return 0
 - **v.right** 
   > Return (1) when player right'Eat' input is triggered else return 0
-- **v.v.equipped**
+- **v.equipped**
   > Return (1) if player is holding an item
 - **v.life** 
   > Return (1) if player is dead else return 0
