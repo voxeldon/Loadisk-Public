@@ -37,6 +37,7 @@ scoreboard players add @s[type=player] v.underground 0
 scoreboard players add @s[type=player] v.underwater 0
 scoreboard players add @s[type=player] v.light_level 0
 scoreboard players add @s[type=player] v.equipped 0
+scoreboard players add @s[type=player] v.temperature 0
 # Temporary System Data
 scoreboard players add @s[type=loadisk:ram] t.clock 0
 scoreboard players add @s[type=loadisk:ram] t.min 0

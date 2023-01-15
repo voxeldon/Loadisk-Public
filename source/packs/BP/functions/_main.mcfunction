@@ -1,6 +1,11 @@
 ##----------------------------------------------------------------------------
 ## MAIN: Core game loop. 
 ##----------------------------------------------------------------------------
+#install Intiger
+execute as @e[type=loadisk:ram] unless score "9903" int = "9903" int run function root/class/integers/int00
+execute as @e[type=loadisk:ram] unless score "9999" int = "9999" int run function root/class/integers/int01
+execute as @e[type=loadisk:ram] unless score "-9903" int = "-9903" int run function root/class/integers/int00
+execute as @e[type=loadisk:ram] unless score "-9999" int = "-9999" int run function root/class/integers/int00
 #Catch join signal
 scoreboard players add @a[scores={t.join=1..}] t.join 1
 scoreboard players reset @a[scores={t.join=5..}] v.join
@@ -9,6 +14,7 @@ scoreboard players reset @a[scores={t.join=5..}] t.join
 execute at @e[type=loadisk:ram,scores={v.time=22..80}]  run scoreboard players set day var 1
 execute at @e[type=loadisk:ram,scores={v.time=80..}]    run scoreboard players set day var 0
 execute at @e[type=loadisk:ram,scores={v.time=..21}]    run scoreboard players set day var 0
+execute at @e[type=loadisk:ram,scores={v.sec=1}]        run scoreboard players operation time var = @e[type=loadisk:ram] v.time
 #Catch near by player signal 0 for no player 1-16 for distance to player
 execute as @a at @s if entity @p[r=16,rm=1] run scoreboard players set @s v.near_player 16
 execute as @a at @s if entity @p[r=15,rm=1] run scoreboard players set @s v.near_player 15
