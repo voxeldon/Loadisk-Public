@@ -4,16 +4,13 @@
     "description": {
       "identifier": "minecraft:player",
       "materials": {"default": "entity_alphatest","cape": "entity_alphatest","animated": "player_animated","spectator": "player_spectator","emissive": "entity_emissive_alpha"},
-      "textures": {"default": "textures/entity/steve","cape": "textures/entity/cape_invisible","custom_achievement": "textures/ui/achievements/custom_achievement"},
-      "geometry": {"default": "geometry.humanoid.custom","cape": "geometry.cape","custom_achievement": "geometry.custom_achievement"},
+      "textures": {"default": "textures/entity/steve","cape": "textures/entity/cape_invisible"},
+      "geometry": {"default": "geometry.humanoid.custom","cape": "geometry.cape"},
       "scripts": {
         "scale": "0.9375",
-        "initialize": ["v.is_holding_right = 0.0;","v.is_blinking = 0.0;","v.last_blink_time = 0.0;","v.hand_bob = 0.0;",
-        "v.render_in_hud = 0.0;","v.inter_custom_achievement_fade_dist = 0.0;","v.custom_achievement_fade_dist = 0.0;"
+        "initialize": ["v.is_holding_right = 0.0;","v.is_blinking = 0.0;","v.last_blink_time = 0.0;","v.hand_bob = 0.0;"
       ],
         "pre_animation": [
-          "v.render_in_hud = !q.is_riding && !q.is_gliding && q.is_alive && q.is_in_ui && !v.map_face_icon;",
-          "t.dist = (q.skin_id > 0) ? 0 : 500; t.time = v.is_first_person ? q.delta_time : q.last_frame_time; v.custom_achievement_fade_dist = v.custom_achievement_fade_dist + (t.dist - v.custom_achievement_fade_dist) * (1 - math.pow((1 - 0.65), t.time / 0.5));",
           "v.render = !q.is_sheared;",
           "v.helmet_layer_visible = 1.0;",
           "v.leg_layer_visible = 1.0;",
@@ -26,10 +23,9 @@
           "v.map_angle = math.clamp(1 - v.player_x_rotation / 45.1, 0.0, 1.0);",
           "v.item_use_normalized = q.main_hand_item_use_duration / q.main_hand_item_max_duration;"
         ],
-        "animate": ["root","custom_achievement_offsets"]
+        "animate": ["root"]
       },
       "animations": {
-        "custom_achievement_offsets": "animation.player.custom_achievement_offsets",
         "root": "controller.animation.player.root",
         "base_controller": "controller.animation.player.base",
         "hudplayer": "controller.animation.player.hudplayer",
@@ -88,8 +84,7 @@
         {"controller.render.player.third_person_spectator": "!v.is_first_person && !v.map_face_icon && q.is_spectator && v.render"},
         {"controller.render.player.first_person": "v.is_first_person && !q.is_spectator && v.render"},
         {"controller.render.player.third_person": "!v.is_first_person && !v.map_face_icon && !q.is_spectator && v.render"},
-        {"controller.render.player.map": "v.map_face_icon && v.render"},
-        {"controller.render.player.custom_achievement": "v.render_in_hud"}
+        {"controller.render.player.map": "v.map_face_icon && v.render"}
       ],
       "enable_attachables": true
     }

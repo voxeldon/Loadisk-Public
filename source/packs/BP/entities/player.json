@@ -48,11 +48,6 @@
       "loadisk:attack.dmg09":{"minecraft:attack": {"damage": 9}},
       "loadisk:attack.dmg10":{"minecraft:attack": {"damage": 10}},
       "loadisk:is_flying":{"minecraft:can_fly":{}},
-      "loadisk:custom_achievement":{
-        "minecraft:skin_id":{"value": 1},
-        "minecraft:timer": {"time": 10,"looping": false,"time_down_event": {"event": "loadisk:reset.custom_achievement_event","target": "self"}}
-      },
-      "loadisk:reset.custom_achievement":{"minecraft:skin_id":{"value": 0}},
       "loadisk:derender":{"minecraft:is_sheared":{}},
       "minecraft:add_bad_omen": {
         "minecraft:spell_effects": {"add_effects": [{"effect": "bad_omen","duration": 6000,"visible": false,"display_on_screen_animation": true}]},
@@ -152,14 +147,6 @@
 			"loadisk:kill.is_underblock_event": {"set_property": { "loadisk:underblock": false}},
       "loadisk:derender_event":  {"add": {"component_groups": ["loadisk:derender"]}},
       "loadisk:render_event":  {"remove": {"component_groups": ["loadisk:derender"]}},
-      "loadisk:reset.custom_achievement_event":  {
-        "remove": {"component_groups": ["loadisk:custom_achievement"]},
-        "add": {"component_groups": ["loadisk:reset.custom_achievement"]}
-      },
-      "loadisk:trig.custom_achievement_event":  {
-        "add": {"component_groups": ["loadisk:custom_achievement"]},
-        "remove": {"component_groups": ["loadisk:reset.custom_achievement"]}
-      },
       "loadisk:is_flying_event": {"add": {"component_groups": ["loadisk:is_flying"]}},
 			"loadisk:kill.is_flying_event": {"remove": {"component_groups": ["loadisk:is_flying"]}},
       "loadisk:set.dmg00_event": {

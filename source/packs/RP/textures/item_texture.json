@@ -1,7 +1,0 @@
-{
-	"resource_pack_name": "loadisk",
-	"texture_name": "atlas.items",
-	"texture_data": {
-		"loadisk:bull": {"textures": "textures/items/null"}
-	}
-}

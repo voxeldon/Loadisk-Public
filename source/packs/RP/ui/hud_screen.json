@@ -165,14 +165,8 @@
         "array_name": "controls",
         "operation": "insert_front",
         "value": {"hud_title_bars@hud.hud_title_bars": {}}
-      },
-      {"array_name": "controls","operation": "insert_front","value": {"custom_achievement@hud.custom_achievement": {}}}
+      }
     ]
-  },
-  "custom_achievement": {
-    "renderer": "live_player_renderer","type": "custom",
-    "anchor_from": "top_right","anchor_to": "top_right",
-    "size": [18.75, 18.75],"offset": [-84, -1000],"layer": 2
   },
   "hud_title_text/title_frame/title": {
     "modifications": [

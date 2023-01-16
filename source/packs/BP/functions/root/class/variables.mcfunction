@@ -7,11 +7,8 @@ scoreboard objectives add const dummy Consts
 scoreboard objectives add timer dummy Timers
 scoreboard objectives add rng dummy Randomizer
 scoreboard players add "Init" var 0
-scoreboard players set "Init" const 0
 scoreboard players add "time" var 0
-scoreboard players set "morning" const 26
-scoreboard players set "noon" const 51
-scoreboard players set "sunrise" const 76
+scoreboard players set "Init" const 0
 # System Variables
 scoreboard objectives add v.choice dummy
 scoreboard objectives add v.clock dummy

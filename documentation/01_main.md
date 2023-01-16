@@ -4,7 +4,7 @@ Loadisk is a tool  that acts as a query & filter converter that takes all potent
 
 This  allows users to create addons without using the player.json or tick.json files, which reduces the risk of conflict errors when using mod packs or large player loadouts. This helps to ensure a smoother and more stable modded gameplay experience.
 
-[**Download v 1.0.0 Beta**](https://github.com/voxeldon/Loadisk-Public/raw/main/builds/loadisk.public1.0.0.mcaddon)
+[**Download v 1.0.1 Beta**](https://github.com/voxeldon/Loadisk-Public/raw/main/builds/loadisk.public1.0.1.mcaddon)
 
 ---
 
