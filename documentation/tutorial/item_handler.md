@@ -1,3 +1,6 @@
+[Back](https://github.com/voxeldon/Loadisk-Public/blob/main/documentation/01_main.md)
+
+*Note: Remove all ```//comments``` for the provided code to operate*
 # **Item Handler**
 Loadisk has built in conversions to handle both left & right input triggers to allow custom items to be easily be created by defining an input variable, an item, and a location to trigger a child function.
 
@@ -23,10 +26,8 @@ execute as @a[scores={v.left=1,t.left=0},hasitem={item=stick, location=slot.weap
 3. Create a sub function for our item called item.test and insert the follow code.
 
 ```js
-#Entry
 //Run our command
 say hello world!
-#Close>>>
 //Close the function loop
 scoreboard players set @s t.right 1
 ```
@@ -41,9 +42,6 @@ execute as @a[scores={t.item_null=2..}] run /function mypack/item.loop_test
 ```
 2. Create a sub function for our item called item.loop_test and insert the follow code.
 ```js
-##----------------------------------------------------------------------------
-## Item : Empty looping item example.
-##----------------------------------------------------------------------------
 //Add scoreboards
 scoreboard objectives add t.item_null dummy
 scoreboard players add @s t.item_null 1
@@ -63,3 +61,5 @@ execute as @s[scores={t.item_null=100}] run say hello_world
 scoreboard players set @s[scores={t.item_null=100}] t.left 1
 scoreboard players set @s[scores={t.item_null=100}] t.item_null 0
 ```
+
+[Back](https://github.com/voxeldon/Loadisk-Public/blob/main/documentation/01_main.md)
