@@ -1,11 +1,16 @@
 ## **Loadisk**
 
-Loadisk is a tool  that acts as a query & filter converter that takes all potential action inputs from the world and player and turns them into variables readable through scoreboards.
+Loadisk is a tool that acts as a query & filter converter that takes all potential action inputs from the world and player and turns them into variables readable through scoreboards.
 
 This  allows users to create addons without using the player.json or tick.json files, which reduces the risk of conflict errors when using mod packs or large player loadouts. This helps to ensure a smoother and more stable modded gameplay experience.
 
-[**Download v 1.0.1 Beta**](https://github.com/voxeldon/Loadisk-Public/raw/main/builds/loadisk.public1.0.1.mcaddon)
+### For Users
 
+- [**Download LD Runner**](https://github.com/voxeldon/Loadisk-Public/raw/main/builds/ldrunner1.0.0.mcpack)
+
+- [**Download LD Library**](https://github.com/voxeldon/Loadisk-Public/raw/main/builds/loadiskLib0.4.2.mcaddon)
+
+- [**Installation Gide**](https://github.com/voxeldon/Loadisk-Public/blob/main/documentation/feature/install.md)
 ---
 
 ### For Addon Makers

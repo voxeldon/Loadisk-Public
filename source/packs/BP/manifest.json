@@ -12,19 +12,12 @@
       "type": "data",
       "uuid": "3c694ef2-3f45-4151-a53d-124afe720aca",
       "version": [1, 0, 0]
-    },
-    {
-      "uuid": "dfcd7ce0-03e4-4c3d-9127-fa44a7afdec7",
-      "version": [1, 0, 0],
-      "type": "script",
-      "language": "javascript",
-      "entry": "scripts/_index.js"
     }
   ],
   "dependencies": [
     {
-      "module_name": "@minecraft/server",
-      "version": "1.0.0"
+      "uuid": "f136e589-cdd5-4a30-89ae-d499424cab28",
+      "version": [1, 0, 0]
     }
   ]
 }

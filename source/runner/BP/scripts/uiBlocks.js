@@ -17,3 +17,4 @@ export const uiNearPlayer = '{"translate":"debug.near_player","with":{"rawtext":
 export const uiNearEntity = '{"translate":"debug.near_entity","with":{"rawtext":[{"selector":"@s"},{"score":{"name":"@s","objective":"v.near_entity"}}]}}';
 export const uiHurt = '{"translate":"debug.hurt","with":{"rawtext":[{"selector":"@s"},{"score":{"name":"@s","objective":"v.hurt"}}]}}';
 export const uiTemp = '{"translate":"debug.temp","with":{"rawtext":[{"selector":"@s"},{"score":{"name":"@s","objective":"v.temperature"}}]}}';
+export const uiPvp = '{"translate":"debug.pvp","with":{"rawtext":[{"selector":"@s"},{"score":{"name":"@s","objective":"v.pvp"}}]}}';

@@ -1,6 +1,6 @@
 import { ver, v } from '../definitions.js';
 import { loopTick, secondTick, minuteTick } from './clock.js';
-import { prefixLocal, prefixGlobal, uiIdle, uiMove, uiSprint, uiSwim, uiSneak, uiJump, uiRide, uiLeft, uiRight, uiDb , uiSleep, uiLightLevel, uiNearPlayer, uiNearEntity, uiHurt, uiTemp } from '../uiBlocks.js';
+import { prefixLocal, prefixGlobal, uiIdle, uiMove, uiSprint, uiSwim, uiSneak, uiJump, uiRide, uiLeft, uiRight, uiDb , uiSleep, uiLightLevel, uiNearPlayer, uiNearEntity, uiHurt, uiTemp, uiPvp } from '../uiBlocks.js';
 
 let ltUI = "";
 let stUI = "";
@@ -16,7 +16,7 @@ export function uiManager() {
 
     //UI Display
     if (uiID === 1) {
-        uiBar = `${prefixLocal} {"rawtext": [{"text":" ⨀ |"}, ${uiIdle},${uiMove},${uiSprint},${uiSwim},${uiSneak},${uiJump},${uiRide},${uiLeft},${uiRight},${uiDb},${uiSleep},${uiHurt},${uiTemp},${uiLightLevel},${uiNearPlayer},${uiNearEntity}]}`
+        uiBar = `${prefixLocal} {"rawtext": [{"text":" ⨀ |"}, ${uiIdle},${uiMove},${uiSprint},${uiSwim},${uiSneak},${uiJump},${uiRide},${uiLeft},${uiRight},${uiDb},${uiSleep},${uiHurt},${uiTemp},${uiLightLevel},${uiNearPlayer},${uiNearEntity},${uiPvp}]}`
     } else {
         uiBar = `titleraw @a actionbar {\"rawtext\":[{\"text\":\" ⨀ | loadisk: ${ver} | Minute: ${mtUI} Second: ${stUI} Tick: ${ltUI}"}]}`
     }

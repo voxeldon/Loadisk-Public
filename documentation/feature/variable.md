@@ -79,6 +79,8 @@
   > Return (1) if player has lost health
 - **v.temperature**
   > Return (0-3) for player detected temperature value. (0 Cold, 1 Mild, 2 Ocean, 3 Warm)
+- **v.pvp**
+  > Return (1) when hit by another player else (0)
 
 
 ## Player Events

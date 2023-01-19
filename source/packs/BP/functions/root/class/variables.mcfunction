@@ -50,6 +50,7 @@ scoreboard objectives add v.near_entity dummy
 scoreboard objectives add v.hurt dummy
 scoreboard objectives add v.temperature dummy
 scoreboard objectives add v.equipped dummy
+scoreboard objectives add v.pvp dummy
 
 # Temporary Variables
 scoreboard objectives add t.choice dummy

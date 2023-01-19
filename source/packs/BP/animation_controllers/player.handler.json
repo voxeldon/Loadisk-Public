@@ -300,7 +300,8 @@
                     ]
                 },
                 "set.hurt00": {
-                    "on_entry": ["/say smack"],
+                    "on_entry": ["/scoreboard players set @s v.pvp 1"],
+                    "on_exit": ["/scoreboard players set @s v.pvp 0","/scoreboard players set @s t.pvp 0"],
                     "transitions": [{"state_filter": "!q.last_hit_by_player"}]
                 }
             }
