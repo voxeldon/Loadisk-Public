@@ -27,4 +27,10 @@ This  allows users to create addons without using the player.json or tick.json f
 
 ---
 
+### Tutorials 
+
+- [How to make an item handler](https://github.com/voxeldon/Loadisk-Public/raw/main/tutorial/item_handler.md)
+
+---
+
 - [*Change Log*](https://github.com/voxeldon/Loadisk-Public/blob/main/documentation/feature/change_log.md)
