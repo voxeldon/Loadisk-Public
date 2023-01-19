@@ -1,7 +1,7 @@
 [Back](https://github.com/voxeldon/Loadisk-Public/blob/main/documentation/01_main.md)
 # Getting Started With Loadisk
 
-**To start making a loadisk powered addon first download the [ldPackGen](https://github.com/voxeldon/Loadisk-Public/raw/main/builds/ldPackGen1.0.0.zip) batch file.** 
+**To start making a loadisk powered addon first download the [ldPackGen](https://github.com/voxeldon/Loadisk-Public/raw/main/builds/ldPackGen1.0.1.zip) batch file.** 
 
 This file generates a directory with the necessary files and folders required to maintain consistency and compatibility within the addon.
 

@@ -6,7 +6,7 @@ This  allows users to create addons without using the player.json or tick.json f
 
 ### For Users
 
-- [**Download LD Runner**](https://github.com/voxeldon/Loadisk-Public/raw/main/builds/ldrunner1.0.0.mcpack)
+- [**Download LD Runner**](https://github.com/voxeldon/Loadisk-Public/raw/main/builds/ldRunner1.0.0.mcpack)
 
 - [**Download LD Library**](https://github.com/voxeldon/Loadisk-Public/raw/main/builds/loadiskLib0.4.2.mcaddon)
 
@@ -23,7 +23,7 @@ This  allows users to create addons without using the player.json or tick.json f
 
 - [Controllers](https://github.com/voxeldon/Loadisk-Public/blob/main/documentation/feature/controllers.md)
 
-- [Loadisk Addon Template Generator](https://github.com/voxeldon/Loadisk-Public/raw/main/builds/ldPackGen1.0.0.zip)
+- [Loadisk Addon Template Generator](https://github.com/voxeldon/Loadisk-Public/raw/main/builds/ldPackGen1.0.1.zip)
 
 ---
 

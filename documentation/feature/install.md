@@ -1,6 +1,6 @@
 # Installation 
 
-1. Install the most recent version of [LD Runner](https://github.com/voxeldon/Loadisk-Public/raw/main/builds/ldrunner1.0.0.mcpack)
+1. Install the most recent version of [LD Runner](https://github.com/voxeldon/Loadisk-Public/raw/main/builds/ldRunner1.0.0.mcpack)
    
    - ldRunner holds all the scripts utilized to operate loadisk
 
