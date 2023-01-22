@@ -51,6 +51,9 @@ scoreboard objectives add v.hurt dummy
 scoreboard objectives add v.temperature dummy
 scoreboard objectives add v.equipped dummy
 scoreboard objectives add v.pvp dummy
+scoreboard objectives add v.weather dummy
+scoreboard objectives add v.on_fire dummy
+scoreboard objectives add v.biome dummy
 
 # Temporary Variables
 scoreboard objectives add t.choice dummy
@@ -88,3 +91,5 @@ scoreboard objectives add t.underwater dummy
 scoreboard objectives add t.join dummy
 scoreboard objectives add t.hurt dummy
 scoreboard objectives add t.equipped dummy
+scoreboard objectives add t.temperature dummy
+scoreboard objectives add v.weather dummy

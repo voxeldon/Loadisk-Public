@@ -2,14 +2,13 @@
     "format_version": "1.10.0",
     "animation_controllers": {
         "controller.animation.loadisk.player.handler": {
-            "initial_state": "state_filter",
+            "initial_state": "controllers",
             "states": {
-                "state_filter": {"transitions": [{"controllers": "(1.0)"}]},
                 "controllers": {
                     "animations": [
-                        "lifetime.c","input.c","movement.c","jump.c","sneak.c","sleep.c","ride.c","ground.c","u_block.c","flight.c","light_level.c","hurt.c","temp.c","hit.c","equipped.c"
-                    ],
-                    "transitions": [{"state_filter": "q.all_animations_finished"}]
+                        "lifetime.c","input.c","movement.c","jump.c","sneak.c","sleep.c","ride.c","ground.c","u_block.c","flight.c","light_level.c",
+                        "hurt.c","temp.c","hit.c","equipped.c","weather.c","on_fire.c","biome.c"
+                    ]
                 }
             }
         },
@@ -291,6 +290,21 @@
                 }
             }
         },
+        "controller.animation.loadisk.player.on_fire": {
+            "initial_state": "state_filter",
+            "states": {
+                "state_filter": {
+                    "transitions": [
+                        {"on_fire": "q.is_on_fire"}
+                    ]
+                },
+                "on_fire": {
+                    "on_entry": ["/scoreboard players set @s v.on_fire 1"],
+                    "on_exit": ["/scoreboard players set @s v.on_fire 0"],
+                    "transitions": [{"state_filter": "!q.is_on_fire"}]
+                }
+            }
+        },
         "controller.animation.loadisk.player.hit": {
             "initial_state": "state_filter",
             "states": {
@@ -319,19 +333,176 @@
                 },
                 "set.temp00": {
                     "on_entry": ["/scoreboard players set @s v.temperature 0"],
+                    "on_exit": ["/scoreboard players set @s t.temperature 0"],
                     "transitions": [{"state_filter": "q.property('loadisk:temperature') != 0"}]
                 },
                 "set.temp01": {
                     "on_entry": ["/scoreboard players set @s v.temperature 1"],
+                    "on_exit": ["/scoreboard players set @s t.temperature 0"],
                     "transitions": [{"state_filter": "q.property('loadisk:temperature') != 1"}]
                 },
                 "set.temp02": {
                     "on_entry": ["/scoreboard players set @s v.temperature 2"],
+                    "on_exit": ["/scoreboard players set @s t.temperature 0"],
                     "transitions": [{"state_filter": "q.property('loadisk:temperature') != 2"}]
                 },
                 "set.temp03": {
                     "on_entry": ["/scoreboard players set @s v.temperature 3"],
+                    "on_exit": ["/scoreboard players set @s t.temperature 0"],
                     "transitions": [{"state_filter": "q.property('loadisk:temperature') != 3"}]
+                }
+            }
+        },
+        "controller.animation.loadisk.player.weather": {
+            "initial_state": "state_filter",
+            "states": {
+                "state_filter": {
+                    "transitions": [
+                        {"set.weather00": "q.property('loadisk:weather') == 0 && !q.is_in_water_or_rain"},
+                        {"set.weather01": "q.property('loadisk:weather') == 0 && q.is_in_water_or_rain"},
+                        {"set.weather02": "q.property('loadisk:weather') == 1"}
+                    ]
+                },
+                "set.weather00": {
+                    "on_entry": ["/scoreboard players set @s v.weather 0"],
+                    "on_exit": ["/scoreboard players set @s t.weather 0"],
+                    "transitions": [{"state_filter": "q.property('loadisk:weather') != 0 || q.is_in_water_or_rain"}]
+                },
+                "set.weather01": {
+                    "on_entry": ["/scoreboard players set @s v.weather 1"],
+                    "on_exit": ["/scoreboard players set @s t.weather 0"],
+                    "transitions": [
+                        {"state_filter": "q.property('loadisk:weather') != 0 || !q.is_in_water_or_rain"},
+                        {"set.weather02": "q.property('loadisk:weather') == 1"}
+                    ]
+                },
+                "set.weather02": {
+                    "on_entry": ["/scoreboard players set @s v.weather 2"],
+                    "on_exit": ["/scoreboard players set @s t.weather 0"],
+                    "transitions": [{"state_filter": "q.property('loadisk:weather') != 1"}]
+                }
+            }
+        },
+        "controller.animation.loadisk.player.biome": {
+            "initial_state": "state_filter",
+            "states": {
+                "state_filter": {
+                    "transitions": [
+                        {"set.biome00": "q.property('loadisk:biome') == 0"},
+                        {"set.biome01": "q.property('loadisk:biome') == 1"},
+                        {"set.biome02": "q.property('loadisk:biome') == 2"},
+                        {"set.biome03": "q.property('loadisk:biome') == 3"},
+                        {"set.biome04": "q.property('loadisk:biome') == 4"},
+                        {"set.biome05": "q.property('loadisk:biome') == 5"},
+                        {"set.biome06": "q.property('loadisk:biome') == 6"},
+                        {"set.biome07": "q.property('loadisk:biome') == 7"},
+                        {"set.biome08": "q.property('loadisk:biome') == 8"},
+                        {"set.biome09": "q.property('loadisk:biome') == 9"},
+                        {"set.biome10": "q.property('loadisk:biome') == 10"},
+                        {"set.biome11": "q.property('loadisk:biome') == 11"},
+                        {"set.biome12": "q.property('loadisk:biome') == 12"},
+                        {"set.biome13": "q.property('loadisk:biome') == 13"},
+                        {"set.biome14": "q.property('loadisk:biome') == 14"},
+                        {"set.biome15": "q.property('loadisk:biome') == 15"},
+                        {"set.biome16": "q.property('loadisk:biome') == 16"},
+                        {"set.biome17": "q.property('loadisk:biome') == 17"}
+                    ]
+                },
+                "set.biome00": {
+                    "on_entry": ["/scoreboard players set @s v.biome 0"],
+                    "on_exit": ["/scoreboard players set @s t.biome 0"],
+                    "transitions": [{"state_filter": "q.property('loadisk:biome') != 0"}]
+                },
+                "set.biome01": {
+                    "on_entry": ["/scoreboard players set @s v.biome 1"],
+                    "on_exit": ["/scoreboard players set @s t.biome 0"],
+                    "transitions": [{"state_filter": "q.property('loadisk:biome') != 1"}]
+                  },
+                  
+              
+                "set.biome02": {
+                  "on_entry": ["/scoreboard players set @s v.biome 2"],
+                  "on_exit": ["/scoreboard players set @s t.biome 0"],
+                  "transitions": [{"state_filter": "q.property('loadisk:biome') != 2"}]
+                },
+                  
+              
+                "set.biome03": {
+                  "on_entry": ["/scoreboard players set @s v.biome 3"],
+                  "on_exit": ["/scoreboard players set @s t.biome 0"],
+                  "transitions": [{"state_filter": "q.property('loadisk:biome') != 3"}]
+                },
+                  
+              
+                "set.biome04": {
+                  "on_entry": ["/scoreboard players set @s v.biome 4"],
+                  "on_exit": ["/scoreboard players set @s t.biome 0"],
+                  "transitions": [{"state_filter": "q.property('loadisk:biome') != 4"}]
+                },
+                "set.biome05": {
+                  "on_entry": ["/scoreboard players set @s v.biome 5"],
+                  "on_exit": ["/scoreboard players set @s t.biome 0"],
+                  "transitions": [{"state_filter": "q.property('loadisk:biome') != 5"}]
+                },
+                "set.biome06": {
+                  "on_entry": ["/scoreboard players set @s v.biome 6"],
+                  "on_exit": ["/scoreboard players set @s t.biome 0"],
+                  "transitions": [{"state_filter": "q.property('loadisk:biome') != 6"}]
+                },
+                "set.biome07": {
+                  "on_entry": ["/scoreboard players set @s v.biome 7"],
+                  "on_exit": ["/scoreboard players set @s t.biome 0"],
+                  "transitions": [{"state_filter": "q.property('loadisk:biome') != 7"}]
+                },
+                "set.biome08": {
+                  "on_entry": ["/scoreboard players set @s v.biome 8"],
+                  "on_exit": ["/scoreboard players set @s t.biome 0"],
+                  "transitions": [{"state_filter": "q.property('loadisk:biome') != 8"}]
+                },
+                "set.biome09": {
+                  "on_entry": ["/scoreboard players set @s v.biome 9"],
+                  "on_exit": ["/scoreboard players set @s t.biome 0"],
+                  "transitions": [{"state_filter": "q.property('loadisk:biome') != 9"}]
+                },
+                "set.biome10": {
+                  "on_entry": ["/scoreboard players set @s v.biome 10"],
+                  "on_exit": ["/scoreboard players set @s t.biome 0"],
+                  "transitions": [{"state_filter": "q.property('loadisk:biome') != 10"}]
+                },
+                "set.biome11": {
+                  "on_entry": ["/scoreboard players set @s v.biome 11"],
+                  "on_exit": ["/scoreboard players set @s t.biome 0"],
+                  "transitions": [{"state_filter": "q.property('loadisk:biome') != 11"}]
+                },
+                "set.biome12": {
+                  "on_entry": ["/scoreboard players set @s v.biome 12"],
+                  "on_exit": ["/scoreboard players set @s t.biome 0"],
+                  "transitions": [{"state_filter": "q.property('loadisk:biome') != 12"}]
+                },
+                "set.biome13": {
+                  "on_entry": ["/scoreboard players set @s v.biome 13"],
+                  "on_exit": ["/scoreboard players set @s t.biome 0"],
+                  "transitions": [{"state_filter": "q.property('loadisk:biome') != 13"}]
+                },
+                "set.biome14": {
+                  "on_entry": ["/scoreboard players set @s v.biome 14"],
+                  "on_exit": ["/scoreboard players set @s t.biome 0"],
+                  "transitions": [{"state_filter": "q.property('loadisk:biome') != 14"}]
+                },
+                "set.biome15": {
+                  "on_entry": ["/scoreboard players set @s v.biome 15"],
+                  "on_exit": ["/scoreboard players set @s t.biome 0"],
+                  "transitions": [{"state_filter": "q.property('loadisk:biome') != 15"}]
+                },
+                "set.biome16": {
+                  "on_entry": ["/scoreboard players set @s v.biome 16"],
+                  "on_exit": ["/scoreboard players set @s t.biome 0"],
+                  "transitions": [{"state_filter": "q.property('loadisk:biome') != 16"}]
+                },
+                "set.biome17": {
+                  "on_entry": ["/scoreboard players set @s v.biome 17"],
+                  "on_exit": ["/scoreboard players set @s t.biome 0"],
+                  "transitions": [{"state_filter": "q.property('loadisk:biome') != 17"}]
                 }
             }
         },

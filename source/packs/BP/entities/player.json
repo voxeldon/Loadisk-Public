@@ -20,19 +20,24 @@
         "light_level.c": "controller.animation.loadisk.player.light_level",
         "equipped.c": "controller.animation.loadisk.equipped",
         "hurt.c": "controller.animation.loadisk.player.hurt",
+        "on_fire.c": "controller.animation.loadisk.player.on_fire",
         "hit.c": "controller.animation.loadisk.player.hit",
         "temp.c": "controller.animation.loadisk.player.temperature",
+        "weather.c": "controller.animation.loadisk.player.weather",
+        "biome.c": "controller.animation.loadisk.player.biome",
 			  "on_join": "animation.loadisk.player.join",
 			  "flight": "animation.loadisk.flight",
 			  "hover": "animation.loadisk.hover",
 			  "lock": "animation.loadisk.flight.lock"
 			},
       "properties": {
-          "loadisk:underblock": {"type": "bool", "default": false},
+          "loadisk:underblock":  {"type": "bool", "default": false},
           "loadisk:light_level": {"type": "int",  "range":  [0,15],"default": 0},
           "loadisk:near_player": {"type": "int",  "range":  [0,10],"default": 0},
-          "loadisk:temperature": {"type": "int",  "range":  [0,3],"default": 0},
-          "loadisk:hurt": {"type": "bool", "default": false}
+          "loadisk:temperature": {"type": "int",  "range":  [0,3 ],"default": 0},
+          "loadisk:weather":     {"type": "int",  "range":  [0,2 ],"default": 0},
+          "loadisk:biome":       {"type": "int",  "range":  [0,17],"default": 0},
+          "loadisk:hurt":        {"type": "bool", "default": false}
       }
     },
     "component_groups": {
@@ -128,6 +133,30 @@
         {"filters": {"all_of": [{"test": "is_temperature_type","value": "mild"}]},"event": "loadisk:set.temp_mild_event"},
         {"filters": {"all_of": [{"test": "is_temperature_type","value": "ocean"}]},"event": "loadisk:set.temp_ocean_event"},
         {"filters": {"all_of": [{"test": "is_temperature_type","value": "warm"}]},"event": "loadisk:set.temp_warm_event"},
+        {
+          "filters": {"all_of": [{"test": "weather_at_position","value": "clear"},{"test": "weather_at_position","value": "precipitation"}]},
+          "event": "loadisk:set.weather_clear_event"
+        },
+        {"filters": {"all_of": [{"test": "weather_at_position","value": "thunderstorm"}]},"event": "loadisk:set.weather_thunder_event"},
+
+        {"filters": {"all_of": [{"test": "is_biome","value": "beach"}]},"event": "loadisk:set.biome00_event"},
+        {"filters": {"all_of": [{"test": "is_biome","value": "desert"}]},"event": "loadisk:set.biome01_event"},
+        {"filters": {"all_of": [{"test": "is_biome","value": "extreme_hills"}]},"event": "loadisk:set.biome02_event"},
+        {"filters": {"all_of": [{"test": "is_biome","value": "flat"}]},"event": "loadisk:set.biome03_event"},
+        {"filters": {"all_of": [{"test": "is_biome","value": "forest"}]},"event": "loadisk:set.biome04_event"},
+        {"filters": {"all_of": [{"test": "is_biome","value": "ice"}]},"event": "loadisk:set.biome05_event"},
+        {"filters": {"all_of": [{"test": "is_biome","value": "jungle"}]},"event": "loadisk:set.biome06_event"},
+        {"filters": {"all_of": [{"test": "is_biome","value": "mesa"}]},"event": "loadisk:set.biome07_event"},
+        {"filters": {"all_of": [{"test": "is_biome","value": "mushroom_island"}]},"event": "loadisk:set.biome08_event"},
+        {"filters": {"all_of": [{"test": "is_biome","value": "ocean"}]},"event": "loadisk:set.biome09_event"},
+        {"filters": {"all_of": [{"test": "is_biome","value": "plain"}]},"event": "loadisk:set.biome10_event"},
+        {"filters": {"all_of": [{"test": "is_biome","value": "river"}]},"event": "loadisk:set.biome11_event"},
+        {"filters": {"all_of": [{"test": "is_biome","value": "savanna"}]},"event": "loadisk:set.biome12_event"},
+        {"filters": {"all_of": [{"test": "is_biome","value": "stone_beach"}]},"event": "loadisk:set.biome13_event"},
+        {"filters": {"all_of": [{"test": "is_biome","value": "swamp"}]},"event": "loadisk:set.biome14_event"},
+        {"filters": {"all_of": [{"test": "is_biome","value": "taiga"}]},"event": "loadisk:set.biome15_event"},
+        {"filters": {"all_of": [{"test": "is_biome","value": "the_end"}]},"event": "loadisk:set.biome16_event"},
+        {"filters": {"all_of": [{"test": "is_biome","value": "the_nether"}]},"event": "loadisk:set.biome17_event"},
         //Vanilla
 				{"filters": {"all_of": [{"test": "has_mob_effect","subject": "self","value": "bad_omen"},
 				{"test": "is_in_village","subject": "self","value": true}]},"event": "minecraft:trigger_raid"}
@@ -264,14 +293,32 @@
       "loadisk:set.ll13_event": {"set_property": { "loadisk:light_level": 13}},
       "loadisk:set.ll14_event": {"set_property": { "loadisk:light_level": 14}},
       "loadisk:set.ll15_event": {"set_property": { "loadisk:light_level": 15}},
-
       "loadisk:set.hurt00_event": {"set_property": { "loadisk:hurt": false}},
       "loadisk:set.hurt01_event": {"set_property": { "loadisk:hurt": true}},
-
       "loadisk:set.temp_cold_event": {"set_property": { "loadisk:temperature": 0}},
       "loadisk:set.temp_mild_event": {"set_property": { "loadisk:temperature": 1}},
       "loadisk:set.temp_ocean_event": {"set_property": { "loadisk:temperature": 2}},
-      "loadisk:set.temp_warm_event": {"set_property": { "loadisk:temperature": 3}}
+      "loadisk:set.temp_warm_event": {"set_property": { "loadisk:temperature": 3}},
+      "loadisk:set.weather_clear_event": {"set_property": { "loadisk:weather": 0}},
+      "loadisk:set.weather_thunder_event": {"set_property": { "loadisk:weather": 1}},
+      "loadisk:set.biome00_event": {"set_property": { "loadisk:biome": 0}},
+      "loadisk:set.biome01_event": {"set_property": { "loadisk:biome": 1}},
+      "loadisk:set.biome02_event": {"set_property": { "loadisk:biome": 2}},
+      "loadisk:set.biome03_event": {"set_property": { "loadisk:biome": 3}},
+      "loadisk:set.biome04_event": {"set_property": { "loadisk:biome": 4}},
+      "loadisk:set.biome05_event": {"set_property": { "loadisk:biome": 5}},
+      "loadisk:set.biome06_event": {"set_property": { "loadisk:biome": 6}},
+      "loadisk:set.biome07_event": {"set_property": { "loadisk:biome": 7}},
+      "loadisk:set.biome08_event": {"set_property": { "loadisk:biome": 8}},
+      "loadisk:set.biome09_event": {"set_property": { "loadisk:biome": 9}},
+      "loadisk:set.biome10_event": {"set_property": { "loadisk:biome": 10}},
+      "loadisk:set.biome11_event": {"set_property": { "loadisk:biome": 11}},
+      "loadisk:set.biome12_event": {"set_property": { "loadisk:biome": 12}},
+      "loadisk:set.biome13_event": {"set_property": { "loadisk:biome": 13}},
+      "loadisk:set.biome14_event": {"set_property": { "loadisk:biome": 14}},
+      "loadisk:set.biome15_event": {"set_property": { "loadisk:biome": 15}},
+      "loadisk:set.biome16_event": {"set_property": { "loadisk:biome": 16}},
+      "loadisk:set.biome17_event": {"set_property": { "loadisk:biome": 17}}
     }
   }
 }

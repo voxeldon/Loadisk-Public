@@ -1,4 +1,7 @@
 [Back](https://github.com/voxeldon/Loadisk-Public/blob/main/documentation/01_main.md)
+# 0.4.3
+- Added v.weather
+- Added v.on_fire
 # Loadisk 0.4.2
 - Added ldRunner
 - Removed scripts from loadisk
