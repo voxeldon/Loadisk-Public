@@ -1,0 +1,207 @@
+{
+  "anim_offset_in": {"anim_type": "offset","from": "$y_offset_from","to": "$y_offset_to","duration": "$title_fade_in_time","next": "@hud.anim_offset_wait"},
+  "anim_offset_wait": {"anim_type": "wait","duration": "$title_stay_time","next": "@hud.anim_offset_out"},
+  "anim_offset_out": {"anim_type": "offset","from": "$y_offset_from_exit","to": "$y_offset_to_exit","duration": "$title_fade_out_time"},
+  "black_image": {
+    "type": "image",
+    "texture": "textures/ui/Black",
+    "layer": 110,
+    "size": ["100%", "100%"],
+    "anims": ["@hud.anim_offset_in"],
+    "bindings": [
+      {"binding_name": "#hud_title_text_string","binding_type": "global"}, 
+      {
+        "binding_type": "view",
+        "source_property_name": "(#hud_title_text_string = 'ui_letterbox')",
+        "target_property_name": "#visible"
+      }
+    ]
+  },
+  "letterbox_panel": {
+    "type": "panel",
+    "controls": [
+      {"upper_bar_panel@hud.upper_bar_panel": {}}, 
+      {"lower_bar_panel@hud.lower_bar_panel": {}}
+    ]
+  },
+  "upper_bar_panel@hud.black_panel": {
+    "size": ["130%", "15%"],
+    "anchor_from": "top_middle",
+    "anchor_to": "top_middle",
+    "$y_offset_from": [0, "-100%y"],
+    "$y_offset_to": [0, "0%y"],
+    "$y_offset_from_exit": [0, "0%y"],
+    "$y_offset_to_exit": [0, "-100%y"],
+    "$offset": [0, "-40%"]
+  },
+  "lower_bar_panel@hud.black_panel": {
+    "size": ["130%", "30%"],
+    "anchor_from": "bottom_middle",
+    "anchor_to": "bottom_middle",
+    "$y_offset_from": [0, "100%y"],
+    "$y_offset_to": [0, "50%y"],
+    "$y_offset_from_exit": [0, "50%y"],
+    "$y_offset_to_exit": [0, "100%y"],
+    "$offset": [0, "40%"]
+  },
+  "black_panel": {
+    "type": "panel",
+    "controls": [
+      {"black_image@hud.black_image": {}}, 
+      {"up_or_bottom_image@hud.black_image": {"offset": "$offset"}}
+    ]
+  },
+  "hud_title_letterbox": {
+    "type": "panel",
+    "factory": {
+      "name": "hud_title_text_factory",
+      "control_ids": {"hud_title_text": "letterbox_panel@hud.letterbox_panel"}
+    }
+  },
+  "cursor_renderer": {
+    "modifications": [
+      {
+        "array_name": "bindings",
+        "operation": "insert_front",
+        "value": {"binding_name": "#hud_title_text_string"}
+      },
+      {
+        "array_name": "bindings",
+        "operation": "insert_back",
+        "value": {
+          "binding_type": "view",
+          "source_property_name": "(not (#hud_title_text_string = 'ui_letterbox'))",
+          "target_property_name": "#visible"
+        }
+      }
+    ]
+  },
+  "mob_effects_renderer": {
+    "modifications": [
+      {
+        "array_name": "bindings",
+        "operation": "insert_front",
+        "value": {"binding_name": "#hud_title_text_string"}
+      },
+      {
+        "array_name": "bindings",
+        "operation": "insert_back",
+        "value": {
+          "binding_type": "view",
+          "source_property_name": "(not (#hud_title_text_string = 'ui_letterbox'))",
+          "target_property_name": "#visible"
+        }
+      }
+    ]
+  },
+  "hud_player_renderer": {"ignored": true},
+  "root_panel/chat_stack/paper_doll_padding": {"ignored": true},
+  "root_panel/chat_stack/non_centered_gui_padding": {"ignored": true},
+  "hud_actionbar_text": {
+    "$atext": "$actionbar_text",
+    "visible": "(not ($atext = 'ui_fade_b'))",//figure out how to hide more strings 
+    "anchor_from": "top_left","anchor_to": "top_left","offset": [2.09, 3]
+  },
+  "hud_actionbar_fade_b": {
+    "type": "panel",
+    "factory": {
+      "name": "hud_actionbar_text_factory",
+      "control_ids": {"hud_actionbar_text": "black@hud.black"}
+    }
+  },
+  "hud_actionbar_fade_w": {
+    "type": "panel",
+    "factory": {
+      "name": "hud_actionbar_text_factory",
+      "control_ids": {"hud_actionbar_text": "white@hud.white"}
+    }
+  },
+  "hud_actionbar_loadisk": {
+    "type": "panel",
+    "factory": {
+      "name": "hud_actionbar_text_factory",
+      "control_ids": {"hud_actionbar_text": "loadisk@hud.loadisk"}
+    }
+  },
+  "black": {
+    "type": "image",
+    "texture": "textures/ui/Black",
+    "$atext": "$actionbar_text",
+    "visible": "($atext = 'ui_fade_b')",
+    "alpha": "@hud.anim_fade_in",
+    "size": ["150%", "150%"],
+    "layer": 150
+  },
+  "white": {
+    "type": "image",
+    "texture": "textures/ui/control_white",
+    "$atext": "$actionbar_text",
+    "visible": "($atext = 'ui_fade_w')",
+    "alpha": "@hud.anim_fade_in",
+    "size": ["150%", "150%"],
+    "layer": 150
+  },
+  "loadisk": {
+    "type": "image",
+    "texture": "textures/ui/loadisk_logo",
+    "$atext": "$actionbar_text",
+    "visible": "($atext = 'ui_loadisk')",
+    "alpha": "@hud.anim_fade_in",
+    "size": ["100%", "100%"],
+    "layer": 150
+  },
+  "anim_fade_in": {"anim_type": "alpha","from": 0,"to": 1,"duration": 0.5,"next": "@hud.anim_wait"},
+  "anim_wait": {"anim_type": "wait","duration": 1,"next": "@hud.anim_fade_out"},
+  "anim_fade_out": {"anim_type": "alpha","from": 1,"to": 0,"duration": 0.5},
+  "root_panel": {
+    "modifications": [
+      {
+        "array_name": "controls",
+        "operation": "insert_front",
+        "value": {"hud_actionbar_fade_b@hud.hud_actionbar_fade_b": {}}
+      },
+      {
+        "array_name": "controls",
+        "operation": "insert_front",
+        "value": {"hud_actionbar_fade_w@hud.hud_actionbar_fade_w": {}}
+      },
+      {
+        "array_name": "controls",
+        "operation": "insert_front",
+        "value": {"hud_actionbar_loadisk@hud.hud_actionbar_loadisk": {}}
+      },
+      {
+        "array_name": "controls",
+        "operation": "insert_front",
+        "value": {"hud_title_letterbox@hud.hud_title_letterbox": {}}
+      }
+    ]
+  },
+  "hud_title_text/title_frame/title": {
+    "modifications": [
+      {
+        "array_name": "bindings","operation": "insert_back",
+        "value": {
+          "binding_type": "view",
+          "source_property_name": "((#text - 'ui_') = #text)",
+          "target_property_name": "#visible"
+        }
+      }
+    ]
+  },
+  "chat_grid_item": {
+    "type": "panel","layer": 1,"size": [ "100%-2px", "100%c" ],
+    "anchor_from": "top_left","anchor_to": "top_left","offset": [ 2, 20 ],
+    "controls": [
+      {
+        "chat_background": {
+          "type": "image",
+          "texture": "textures/ui/Black","alpha": 0.7,
+          "size": [ "100%", "100%c" ],"offset": [ 2, 20 ],
+          "anims": ["@hud.anim_chat_bg_wait"],
+          "controls": [{"chat_text@chat_label": {"anchor_from": "top_left","anchor_to": "top_left"}}]
+        }
+      }
+    ]
+  }
+}

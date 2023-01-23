@@ -68,7 +68,19 @@
 ## Player Events
 | Events | Description|
 |--|--|
-| **loadisk:set.dmg(0,10)_event** | **set player damage output** |
+| **loadisk:set.dmg(0,10)_event** | set player damage output |
 | *Example* | */event entity @s loadisk:set.dmg10_event* |
+
+## UI Events
+| Events | Description|
+|--|--|
+| **ui_fade_b** | Fade to black |
+| **ui_fade_w** | Fade to white |
+| **ui_frost** | Display onscreen frost effect |
+| **ui_letterbox** | Display letterbox effect |
+| **ui_achievement** | Display a custom achievement |
+| *Example* | */title @s times 10 60 10* |
+| | */title @s subtitle Survive for 100 days* |
+|  | */title @s title ui_achievement* |
 
 [Back](https://github.com/Voxel-Lab-Studios/Loadisk/blob/main/documentation/01_main.md)

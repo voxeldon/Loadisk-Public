@@ -2,6 +2,11 @@
 # 0.4.3
 - Added v.weather
 - Added v.on_fire
+- Added fade to black effect
+- Added fade to white effect
+- Added on screen frost effect
+- Added letter box effect
+- Added custom achievement assembler 
 # Loadisk 0.4.2
 - Added ldRunner
 - Removed scripts from loadisk
